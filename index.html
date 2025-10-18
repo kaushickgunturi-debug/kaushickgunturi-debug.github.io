@@ -69,8 +69,25 @@
       background: #2563eb;
       transform: translateY(-2px);
     }
+
+    /* 🌟 Fade-in animation for hero section */
+    .hero-content {
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
+
 
 
     * { box-sizing: border-box; }
