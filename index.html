@@ -23,17 +23,57 @@
     a { color: var(--accent-2); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .headshot {
-      width: 280px;
-      height: 280px;
-      max-width: 80vw;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 20px auto;
-      box-shadow: 0 0 20px rgba(59,130,246,0.5);
-      border: 1px solid #1e293b;
-    }
+  .headshot {
+    width: 280px;
+    height: 280px;
+    max-width: 80vw;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(59,130,246,0.5);
+    border: 1px solid #1e293b;
+  }
+
+  /* 🧩 Step 2 – Hero layout and button styles */
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 40px 20px;
+  }
+
+  .hero-text {
+    flex: 1 1 400px;
+    min-width: 300px;
+  }
+
+  .hero-photo {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 18px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .cta:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+
   </style>
 </head>
 
@@ -118,14 +158,20 @@
     </div>
   </header>
 
-  <main class="container" id="home">
-    <div class="hero">
-      <div class="card">
-        <div class="kicker">Business Analyst</div>
-        <h1>Kaushick Varma Gunturi</h1>
-        <p class="lead">Business Analyst specializing in transforming business needs into actionable insights and solutions.</p>
-        <a class="cta" href="#experience">View Experience</a>
-<img src="profile-placeholder.png?v=4" alt="Kaushick Varma Gunturi" class="headshot" />
+ <section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="kicker">Business Analyst</div>
+      <h1>Kaushick Varma Gunturi</h1>
+      <p class="lead">Business Analyst specializing in transforming business needs into actionable insights and solutions.</p>
+      <a class="cta" href="#experience">View Experience</a>
+    </div>
+    <div class="hero-photo">
+      <img src="profile-placeholder.png?v=4" alt="Kaushick Varma Gunturi" class="headshot" />
+    </div>
+  </div>
+</section>
+
     <section id="about" class="grid">
       <div class="card">
         <h2>About</h2>
