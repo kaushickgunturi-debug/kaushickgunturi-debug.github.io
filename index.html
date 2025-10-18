@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -6,41 +8,83 @@
   <meta name="author" content="Kaushick Varma Gunturi" />
   <link rel="icon" href="favicon.png" />
 
-  <!-- ✅ All CSS should be wrapped inside this style block -->
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      color: var(--text);
+      color: #f8fafc;
       background: radial-gradient(1200px 800px at 80% -10%, rgba(59,130,246,.15), transparent 60%),
                   linear-gradient(180deg, #0a0f1f 0%, #0b1020 100%);
     }
 
-    a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .headshot {
-      width: 280px;
-      height: 280px;
-      max-width: 80vw;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 20px auto;
-      box-shadow: 0 0 20px rgba(59,130,246,0.5);
-      border: 1px solid #1e293b;
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* 🧩 Step 2 – Hero layout and button styles */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(8px);
+      background: rgba(11,16,32,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+    }
+
+    header h1 {
+      font-size: 18px;
+      color: #f8fafc;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 18px;
+    }
+
+    nav a {
+      color: #94a3b8;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #3b82f6;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
     .hero-content {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 2rem;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      animation: fadeInUp 1.2s ease-in-out;
     }
 
     .hero-text {
@@ -54,14 +98,46 @@
       justify-content: center;
     }
 
+    .headshot {
+      width: 280px;
+      height: 280px;
+      max-width: 80vw;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 20px auto;
+      box-shadow: 0 0 25px rgba(59,130,246,0.5);
+      border: 2px solid #1e293b;
+    }
+
+    .kicker {
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      margin: 10px 0;
+      color: #f8fafc;
+    }
+
+    .lead {
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
     .cta {
       display: inline-block;
-      margin-top: 18px;
-      padding: 12px 18px;
       background: #3b82f6;
       color: white;
       font-weight: 700;
-      border-radius: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
@@ -70,11 +146,42 @@
       transform: translateY(-2px);
     }
 
-    /* 🌟 Fade-in animation for hero section */
-    .hero-content {
-      animation: fadeInUp 1.2s ease-in-out;
+    /* About + Quick Links */
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
     }
 
+    .card {
+      background: rgba(255,255,255,0.02);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-size: 26px;
+      color: #f1f5f9;
+      margin-bottom: 12px;
+    }
+
+    p.small {
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #cbd5e1;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Fade-in animation */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -88,202 +195,53 @@
   </style>
 </head>
 
-
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(59,130,246,.15), transparent 60%),
-                  linear-gradient(180deg, #0a0f1f 0%, #0b1020 100%);
-    }
-    a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      position: sticky; top: 0; z-index: 30;
-      backdrop-filter: blur(8px);
-      background: rgba(11,16,32,0.6);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav {
-      max-width: 1100px; margin: 0 auto; padding: 14px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav a.brand { font-weight: 700; letter-spacing:.3px; }
-    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
-    .nav ul a { color: var(--muted); font-weight: 600; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-    .hero {
-      display: grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items: center;
-      padding: 40px 0 10px;
-    }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      border: 1px solid var(--border);
-      border-radius: 18px; padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    }
-    .kicker { color: var(--accent-2); font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-    h1 { font-size: clamp(32px, 5vw, 52px); margin: 8px 0 12px; line-height: 1.05; }
-    p.lead { color: var(--muted); font-size: clamp(16px, 2vw, 18px); }
-    .cta { display: inline-block; margin-top: 18px; padding: 12px 18px; background: var(--accent); color: white; border-radius: 10px; font-weight: 700; }
-    .photo {
-      aspect-ratio: 1/1; width: 100%; border-radius: 18px;
-      background: url('assets/profile-placeholder.png') center/cover, var(--card);
-      border: 1px solid var(--border);
-      min-height: 260px;
-    }
-    section { padding: 24px 0; }
-    h2 { font-size: 26px; margin: 4px 0 14px; }
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
-    .timeline .role { font-weight: 700; }
-    .meta { color: var(--muted); font-size: 14px; }
-    .list { margin: 10px 0 0 16px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .chip {
-      background: var(--chip); border: 1px solid var(--border); padding: 8px 10px; border-radius: 999px; color: var(--muted); font-weight: 600; font-size: 14px;
-    }
-    footer { border-top: 1px solid var(--border); color: var(--muted); margin-top: 40px; }
-    .contact-cards { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
-    .small { font-size: 13px; color: var(--muted); }
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-      .contact-cards { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
 <body>
   <header>
-    <div class="nav">
-      <a class="brand" href="#home">K. V. Gunturi</a>
+    <h1>K. V. Gunturi</h1>
+    <nav>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
+    </nav>
   </header>
 
- <section class="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="kicker">Business Analyst</div>
-      <h1>Kaushick Varma Gunturi</h1>
-      <p class="lead">Business Analyst specializing in transforming business needs into actionable insights and solutions.</p>
-      <a class="cta" href="#experience">View Experience</a>
+  <main>
+    <!-- Hero Section -->
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="kicker">Business Analyst</div>
+        <h1>Kaushick Varma Gunturi</h1>
+        <p class="lead">Business Analyst specializing in transforming business needs into actionable insights and solutions.</p>
+        <a class="cta" href="#experience">View Experience</a>
+      </div>
+      <div class="hero-photo">
+        <img src="profile-placeholder.png" alt="Kaushick Varma Gunturi" class="headshot" />
+      </div>
     </div>
-    <div class="hero-photo">
-      <img src="profile-placeholder.png?v=4" alt="Kaushick Varma Gunturi" class="headshot" />
-    </div>
-  </div>
-</section>
 
-    <section id="about" class="grid">
+    <!-- About Section -->
+    <section id="about">
       <div class="card">
         <h2>About</h2>
-        <p class="small">I bridge the gap between data and decision‑making by delivering actionable insights through modern analytics tools and business intelligence platforms.</p>
+        <p class="small">I bridge the gap between data and decision-making by delivering actionable insights through modern analytics tools and business intelligence platforms.</p>
         <h3>Education</h3>
-        <ul class="list">
+        <ul>
           <li><strong>Master’s in Business Analytics</strong> — University of New Haven, New Haven, CT <span class="meta">Sept 2022 – May 2024</span></li>
           <li><strong>B.Tech in Computer Science & Engineering</strong> — Raghu Engineering College, Andhra Pradesh, India <span class="meta">Aug 2018 – May 2022</span></li>
         </ul>
       </div>
+
       <div class="card">
         <h2>Quick Links</h2>
-        <p class="small">Replace links as needed.</p>
-        <div class="chips">
-          <a class="chip" href="Kaushick_Gunturi_Resume.pdf" download>
-            Download Résumé
-          </a>
-
-
-          <a class="chip" href="#">LinkedIn</a>
-          <a class="chip" href="#">GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="timeline">
-      <div class="card">
-        <h2>Experience</h2>
-        <p class="role">Business Analyst — REPAY <span class="meta">Louisville, KY · Apr 2025 – Present</span></p>
-        <ul class="list">
-          <li>Spearheaded data validation and UAT for compliance workflows, elevating verification efficiency by 14% and reducing post‑release defects.</li>
-          <li>Automated Power BI dashboards with DAX measures, shortening decision cycles by 22% and improving KPI visibility.</li>
-          <li>Partnered cross‑functionally to ensure 100% requirements traceability; improved audit readiness via data reconciliations.</li>
-        </ul>
-        <p class="role">Business Analyst — Mindoula <span class="meta">Silver Spring, MD · Jul 2024 – Mar 2025</span></p>
-        <ul class="list">
-          <li>Led workshops and stakeholder interviews; authored BRDs/FRDs and user stories, reducing rework by 16%.</li>
-          <li>Delivered SQL/Power BI reporting suites improving KPI accuracy by 12%; integrated QA into reporting cycles.</li>
-          <li>Performed gap and root‑cause analysis to remediate data integrity issues and prevent recurrence.</li>
-        </ul>
-        <p class="role">Data Analyst — Dotsquare Technologies India Pvt. Ltd <span class="meta">India · May 2020 – Apr 2022</span></p>
-        <ul class="list">
-          <li>Consolidated multi‑source datasets with 98% accuracy; delivered 100+ operational/financial reports (Power BI/Excel).</li>
-          <li>Deployed automated data refresh pipelines improving dashboard performance by 18%.</li>
-          <li>Created SQL‑based queries to speed analytical requests by 15%.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="card">
-        <h2>Skills</h2>
-        <div class="grid">
-          <div>
-            <h3>Technical</h3>
-            <div class="chips">
-              <span class="chip">Python (95%)</span>
-              <span class="chip">SQL (90%)</span>
-              <span class="chip">Snowflake (85%)</span>
-              <span class="chip">Azure (80%)</span>
-              <span class="chip">Power BI (75%)</span>
-              <span class="chip">Tableau (70%)</span>
-              <span class="chip">Excel (67%)</span>
-              <span class="chip">PostgreSQL (65%)</span>
-            </div>
-          </div>
-          <div>
-            <h3>Business Analysis & PM</h3>
-            <div class="chips">
-              <span class="chip">BRD</span>
-              <span class="chip">User Stories</span>
-              <span class="chip">UAT Testing</span>
-              <span class="chip">HIPAA</span>
-              <span class="chip">PCI‑DSS</span>
-              <span class="chip">SOC 2</span>
-              <span class="chip">JIRA</span>
-              <span class="chip">Confluence</span>
-              <span class="chip">Azure DevOps</span>
-              <span class="chip">Teams</span>
-              <span class="chip">Slack</span>
-              <span class="chip">PowerPoint</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="card">
-        <h2>Contact</h2>
-        <div class="contact-cards">
-          <div><strong>Email</strong><br><a href="mailto:kaushickgunturi@gmail.com">kaushickgunturi@gmail.com</a></div>
-          <div><strong>Phone</strong><br><a href="tel:+14128086629">+1 (412) 808‑6629</a></div>
-          <div><strong>Location</strong><br>Pittsburgh, PA</div>
-        </div>
-        <p class="small" style="margin-top:10px;">To enable a contact form later, wire it to Formspree or a backend.</p>
+        <p class="small">Useful resources and connections.</p>
+        <a class="cta" href="Kaushick_Gunturi_Resume.pdf" download>Download Résumé</a>
+        <p><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></p>
+        <p><a href="https://github.com/kaushickgunturi-debug" target="_blank">GitHub</a></p>
       </div>
     </section>
   </main>
-
-  <footer class="container">
-    <p class="small">© <span id="year"></span> Kaushick Varma Gunturi. All rights reserved.</p>
-  </footer>
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
