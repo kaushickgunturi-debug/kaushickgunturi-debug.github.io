@@ -17,101 +17,450 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
-    /* ================= Base, Theme & Resets ================= */
     :root{
-      --bg1:#f3e8ff; /* lavender */
-      --bg2:#eef4ff; /* soft blue */
-      --ink:#0b1020;
-      --muted:#5b6b81;
-      --chip:#ffffffaa;
-      --glass:#ffffffb3;
-      --white:#fff;
-      --accent:#ffb703;
-      --accent-2:#3b82f6;
-      --accent-3:#a855f7;
+      --bg1:#f3e8ff; --bg2:#eef4ff; --ink:#0b1020; --muted:#5b6b81;
+      --glass:#ffffffb3; --white:#fff; --accent:#ffb703; --accent-2:#3b82f6; --accent-3:#a855f7;
       --shadow:0 20px 40px rgba(27,46,94,.18);
-      --radius-xl:22px;
-      --radius-lg:18px;
-      --radius-full:999px;
-      --nav-h:64px;
+      --radius-xl:22px; --radius-lg:18px; --radius-full:999px; --nav-h:64px;
     }
-    /* Dark theme */
     :root[data-theme="dark"]{
-      --bg1:#0f1220;
-      --bg2:#0a0f1a;
-      --ink:#e6e9f2;
-      --muted:#a0acc2;
-      --glass:rgba(18,22,33,0.6);
-      --white:#121628;
-      --accent:#ffb703;
-      --accent-2:#60a5fa;
-      --accent-3:#c084fc;
+      --bg1:#0f1220; --bg2:#0a0f1a; --ink:#e6e9f2; --muted:#a0acc2;
+      --glass:rgba(18,22,33,0.6); --white:#121628; --accent:#ffb703; --accent-2:#60a5fa; --accent-3:#c084fc;
       --shadow:0 20px 40px rgba(0,0,0,.45);
     }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif; color:var(--ink);
+      background:linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, #ffffff 100%); background-attachment:fixed;}
+    :root[data-theme="dark"] body{background:linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, #0a0f1a 100%)}
+    a{color:var(--accent-2); text-decoration:none} a:hover{text-decoration:underline}
+    img{max-width:100%; display:block}
+    :where(a,button,[tabindex]):focus-visible{outline:3px solid var(--accent-2); outline-offset:3px; border-radius:10px}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    html:focus-within{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      color:var(--ink);
-      background:linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, #ffffff 100%);
-      background-attachment:fixed;
-    }
-    :root[data-theme="dark"] body{
-      background:linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, #0a0f1a 100%);
-    }
-    a{color:var(--accent-2);text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%;display:block}
-    /* Focus styles */
-    :where(a, button, [tabindex]):focus-visible{
-      outline:3px solid var(--accent-2);
-      outline-offset:3px;
-      border-radius:10px;
-    }
+    .container{max-width:1180px; margin:0 auto; padding:48px 20px}
+    .section{scroll-margin-top:calc(var(--nav-h) + 20px)}
+    .muted{color:var(--muted)}
 
-    /* ================= Layout Helpers ================= */
-    .container{max-width:1180px; margin:0 auto; padding:48px 20px;}
-    .section{scroll-margin-top:calc(var(--nav-h) + 20px);}
-    .muted{color:var(--muted);}
+    .skip-link{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip-link:focus{position:fixed; left:20px; top:12px; width:auto; height:auto; padding:10px 14px; background:#fff; color:#111; z-index:9999; border-radius:10px; box-shadow:var(--shadow)}
+    :root[data-theme="dark"] .skip-link{background:#0d1222; color:#e6e9f2}
 
-    /* ================= Skip link ================= */
-    .skip-link{
-      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      position:fixed; left:20px; top:12px; width:auto; height:auto; padding:10px 14px;
-      background:#fff; color:#111; z-index:9999; border-radius:10px; box-shadow:var(--shadow);
-    }
-    :root[data-theme="dark"] .skip-link{background:#0d1222;color:#e6e9f2}
-
-    /* ================= Navbar ================= */
-    header.nav{
-      position:sticky; top:0; z-index:50; height:var(--nav-h);
-      backdrop-filter:blur(12px);
+    header.nav{position:sticky; top:0; z-index:50; height:var(--nav-h); backdrop-filter:blur(12px);
       background:linear-gradient(90deg, rgba(255,255,255,.9) 0%, rgba(236,244,255,.9) 50%, rgba(225,240,255,.85) 100%);
-      box-shadow:0 2px 12px rgba(59,130,246,.1);
-      border-bottom:1px solid rgba(200,220,255,.6);
-      transition:background .3s ease, box-shadow .3s ease;
-    }
-    :root[data-theme="dark"] header.nav{
-      background:linear-gradient(90deg, rgba(13,18,34,.8) 0%, rgba(12,16,29,.8) 100%);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      box-shadow:0 2px 12px rgba(0,0,0,.5);
-    }
-    .nav-inner{
-      max-width:1180px; margin:0 auto; padding:12px 20px;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand{font-weight:800; letter-spacing:.3px;}
-    nav ul{list-style:none; display:flex; gap:22px; margin:0; padding:0;}
+      box-shadow:0 2px 12px rgba(59,130,246,.1); border-bottom:1px solid rgba(200,220,255,.6); transition:background .3s ease, box-shadow .3s ease}
+    :root[data-theme="dark"] header.nav{background:linear-gradient(90deg, rgba(13,18,34,.8) 0%, rgba(12,16,29,.8) 100%); border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 2px 12px rgba(0,0,0,.5)}
+    .nav-inner{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
+    .brand{font-weight:800; letter-spacing:.3px}
+    nav ul{list-style:none; display:flex; gap:22px; margin:0; padding:0}
     nav a{color:#334155; font-weight:600; padding:10px 8px; border-radius:10px}
     nav a.active{background:rgba(59,130,246,.12); text-decoration:none}
-    :root[data-theme="dark"] nav a{color:#c9d4ed}
-    :root[data-theme="dark"] nav a.active{background:rgba(96,165,250,.15)}
+    :root[data-theme="dark"] nav a{color:#c9d4ed} :root[data-theme="dark"] nav a.active{background:rgba(96,165,250,.15)}
+    .theme-toggle{margin-left:14px; border:1px solid rgba(150,170,210,.4); background:transparent; padding:8px 12px; border-radius:12px; font-weight:700; cursor:pointer; color:inherit}
 
-    .theme-toggle{
-      margin-left:14px; border:1px solid rgba(150,170,210,.4); background:transparent;
-      padding:8
+    .hero{display:grid; grid-template-columns:1.2fr .9fr; gap:40px; align-items:center; padding:28px 0 40px}
+    .kicker{color:#66789a; font-weight:800; text-transform:uppercase; letter-spacing:1px}
+    :root[data-theme="dark"] .kicker{color:#9fb0cf}
+    h1{font-size:clamp(38px,6vw,64px); line-height:1.03; margin:10px 0 8px}
+    .lead{color:#5b6b81; font-size:clamp(16px,2vw,18px); max-width:62ch}
+    :root[data-theme="dark"] .lead{color:#a0acc2}
+    .cta-row{display:flex; gap:14px; margin-top:22px}
+    .btn{display:inline-block; padding:14px 20px; border-radius:14px; font-weight:800; box-shadow:var(--shadow); transition:transform .15s ease, filter .15s ease}
+    .btn:hover{transform:translateY(-2px); filter:saturate(1.05)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent-2), #2563eb); color:#fff}
+    .btn-ghost{background:#fff; border:1px solid #e6eef9; color:#0b1020}
+    :root[data-theme="dark"] .btn-ghost{background:#121628; border-color:#28324a; color:#e6e9f2}
+
+    .art{position:relative; display:grid; place-items:center; isolation:isolate}
+    .blob{position:absolute; width:82%; height:82%; border-radius:45% 55% 60% 40%/50% 45% 55% 50%;
+      background:radial-gradient(120% 120% at 20% 10%, #ffd166 0 25%, #fca311 40%, #ffb703 60%, transparent 70%),
+                 radial-gradient(110% 110% at 85% 85%, #60a5fa 0 35%, #3b82f6 55%, transparent 70%);
+      filter:blur(6px) saturate(1.05); transform:rotate(-6deg); z-index:-1; box-shadow:var(--shadow)}
+    :root[data-theme="dark"] .blob{opacity:.85; filter:blur(10px) saturate(1.1)}
+    .headshot{width:min(360px,72vw); height:min(360px,72vw); border-radius:50%; object-fit:cover; border:6px solid #fff; background:#fff; box-shadow:0 30px 70px rgba(59,130,246,.25)}
+    :root[data-theme="dark"] .headshot{border-color:#0d1222; background:#0d1222}
+    .badge{position:absolute; right:6%; top:8%; background:#fff; padding:10px 14px; border-radius:14px; box-shadow:var(--shadow); font-weight:800; font-size:14px}
+    :root[data-theme="dark"] .badge{background:#0d1222; color:#e6e9f2; border:1px solid #28324a}
+
+    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px}
+    .card{background:var(--glass); backdrop-filter:blur(10px); border:1px solid #e7eefb; border-radius:var(--radius-xl); padding:22px; box-shadow:var(--shadow)}
+    :root[data-theme="dark"] .card{border-color:#28324a}
+
+    .xp-card{position:relative; overflow:hidden}
+    .xp-top{display:flex; gap:14px; align-items:center; margin-bottom:6px}
+    .logo-dot{width:42px; height:42px; border-radius:12px; background:#fff; border:1px solid #eaf1fd; display:grid; place-items:center; font-weight:800; color:#3b82f6; box-shadow:0 6px 18px rgba(59,130,246,.18)}
+    :root[data-theme="dark"] .logo-dot{background:#0d1222; border-color:#28324a; color:#60a5fa}
+    .client{font-weight:800; font-size:18px}
+    .role{font-weight:700; color:#0f172a} :root[data-theme="dark"] .role{color:#dfe6fb}
+    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#435065; font-weight:600}
+    :root[data-theme="dark"] .xp-meta{color:#9fb0cf}
+    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid #e6eef9; padding:8px 12px; border-radius:999px; font-size:13px}
+    :root[data-theme="dark"] .meta-chip{background:#0d1222; border-color:#28324a; color:#c9d4ed}
+    .xp-highlights{margin-top:8px; padding-left:18px}
+    .xp-highlights li{margin:6px 0}
+    .tagline{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px}
+    .tag{font-size:12px; background:#eef6ff; border:1px solid #dbeafe; color:#1d4ed8; padding:6px 10px; border-radius:999px; font-weight:700}
+    :root[data-theme="dark"] .tag{background:#13203a; border-color:#1f3b6a; color:#93c5fd}
+
+    .brand-bg{position:relative; margin-top:24px; padding:80px 0; display:flex; justify-content:center; align-items:center}
+    .brand-bg::before{content:""; position:absolute; inset:0; width:85%; max-width:900px; height:360px; margin:auto;
+      background:linear-gradient(180deg, #ffffffc9 0%, #f1f6ffb3 100%); border:1px solid #e5ecf8; border-radius:40px; box-shadow:0 20px 50px rgba(100,149,237,.15); z-index:0}
+    :root[data-theme="dark"] .brand-bg::before{background:linear-gradient(180deg, rgba(15,20,35,.7) 0%, rgba(12,17,31,.7) 100%); border-color:#28324a; box-shadow:0 20px 50px rgba(0,0,0,.35)}
+    .brand-sphere{position:relative; z-index:2; width:260px; height:260px; border-radius:50%; background:radial-gradient(120% 120% at 30% 30%, #fff, #f3f8ff 60%, #e9f2ff);
+      border:1px solid #e5eefc; box-shadow:var(--shadow); display:grid; place-items:center; gap:10px}
+    :root[data-theme="dark"] .brand-sphere{background:radial-gradient(120% 120% at 30% 30%, #0d1222, #11182c 60%, #0b1226); border-color:#28324a}
+    .logo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:70%}
+    .logo{background:#fff; border:1px solid #e8eef7; border-radius:12px; height:46px; display:grid; place-items:center; font-weight:800; color:#66789a}
+    :root[data-theme="dark"] .logo{background:#0d1222; border-color:#28324a; color:#9fb0cf}
+
+    .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
+    .project{overflow:hidden; border-radius:20px; background:#fff; border:1px solid #e6eef9; box-shadow:var(--shadow)}
+    :root[data-theme="dark"] .project{background:#0d1222; border-color:#28324a}
+    .project img{width:100%; height:170px; object-fit:cover; display:block}
+    .project .p-body{padding:14px}
+    .project h3{margin:8px 0 6px}
+
+    /* Certifications */
+    .certs{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
+    .cert{overflow:hidden; border-radius:18px; background:#fff; border:1px solid #e6eef9; box-shadow:var(--shadow)}
+    :root[data-theme="dark"] .cert{background:#0d1222; border-color:#28324a}
+    .cert .thumb{width:100%; height:180px; object-fit:cover; display:block; cursor:zoom-in}
+    .cert .c-body{padding:14px}
+    .cert h3{margin:6px 0 6px; font-size:18px}
+    .pill{display:inline-block; font-size:12px; background:#eef6ff; border:1px solid #dbeafe; color:#1d4ed8; padding:6px 10px; border-radius:999px; font-weight:700}
+    :root[data-theme="dark"] .pill{background:#13203a; border-color:#1f3b6a; color:#93c5fd}
+
+    /* Lightbox dialog */
+    dialog.lightbox{border:none; padding:0; max-width:min(96vw,1200px); width:fit-content; background:transparent}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .lightbox img{max-height:85vh; width:auto; height:auto; display:block; border-radius:12px}
+    .lightbox .close{position:absolute; top:10px; right:10px; background:#fff; border:1px solid #e6eef9; border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:800}
+    :root[data-theme="dark"] .lightbox .close{background:#0d1222; border-color:#28324a; color:#e6e9f2}
+
+    footer{padding:60px 0 80px; text-align:center; color:#6b7c93}
+    :root[data-theme="dark"] footer{color:#9fb0cf}
+
+    @media (max-width:980px){ .hero{grid-template-columns:1fr} .art{order:-1} .badge{top:auto; bottom:6%} }
+    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
+  </style>
+
+  <!-- JSON-LD Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Kaushick Varma Gunturi",
+    "jobTitle":"Business Analyst",
+    "email":"mailto:Kaushickgunturi@gmail.com",
+    "telephone":"+1-412-808-6629",
+    "url":"https://your-domain.example/",
+    "address": { "@type":"PostalAddress", "addressLocality":"Pittsburgh", "addressRegion":"PA", "addressCountry":"US" },
+    "hasCredential": [
+      {"@type":"EducationalOccupationalCredential","name":"Microsoft Certified: Azure Fundamentals","issuer":{"@type":"Organization","name":"Microsoft"},"dateIssued":"2023-06-24"},
+      {"@type":"EducationalOccupationalCredential","name":"Salesforce Certified Administrator","issuer":{"@type":"Organization","name":"Salesforce"},"dateIssued":"2023-07-11"},
+      {"@type":"EducationalOccupationalCredential","name":"SQL Essential Training","issuer":{"@type":"Organization","name":"LinkedIn Learning"},"dateIssued":"2024-03-15"},
+      {"@type":"EducationalOccupationalCredential","name":"Power BI Essential Training","issuer":{"@type":"Organization","name":"LinkedIn Learning"},"dateIssued":"2024-03-21"},
+      {"@type":"EducationalOccupationalCredential","name":"AZ-900 Cert Prep: Azure Architecture & Security","issuer":{"@type":"Organization","name":"LinkedIn Learning"},"dateIssued":"2024-04-04"}
+    ],
+    "sameAs":[ "https://www.linkedin.com/", "https://github.com/kaushickgunturi-debug" ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" role="banner">
+    <div class="nav-inner">
+      <div class="brand">K. V. Gunturi</div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="nav-link" href="#hero">Home</a></li>
+          <li><a class="nav-link" href="#experience">Experience</a></li>
+          <li><a class="nav-link" href="#brands">Brands</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#certs">Certifications</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="container section" id="hero">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="kicker">Business Analyst</p>
+          <h1 id="hero-title">Hi! I am<br/>Kaushick Varma Gunturi</h1>
+          <p class="lead">I turn business questions into measurable insights and clear decisions using SQL, Python, Power BI, and modern data platforms.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact" aria-label="Hire me via contact section">Hire Me</a>
+            <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
+          </div>
+        </div>
+
+        <div class="art" aria-hidden="true">
+          <div class="blob"></div>
+          <img class="headshot" src="profile-placeholder.png" alt="Portrait of Kaushick Varma Gunturi" loading="lazy" />
+          <div class="badge">🏆 Best Data Project</div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section" aria-labelledby="exp-title" style="margin-top:24px">
+        <h2 id="exp-title" style="margin:4px 0 16px">Professional <span style="color:var(--accent-2)">Experience</span></h2>
+
+        <div class="grid" role="list">
+          <!-- REPAY -->
+          <article class="card xp-card" role="listitem" aria-labelledby="xp-repay-title">
+            <div class="xp-top">
+              <div class="logo-dot" aria-hidden="true">R</div>
+              <div>
+                <div class="client" id="xp-repay-title">REPAY (Realtime Electronic Payments)</div>
+                <div class="role">Business Analyst — Compliance & Reporting</div>
+              </div>
+            </div>
+            <div class="xp-meta" aria-label="Dates and location">
+              <span class="meta-chip">🗓️ Apr&nbsp;2025 – Present</span>
+              <span class="meta-chip">📍 Louisville, KY</span>
+            </div>
+            <ul class="xp-highlights">
+              <li>Led data validation & UAT for compliance workflows; <strong>+14% verification efficiency</strong> and reduced post-release defects.</li>
+              <li>Designed Power BI KPI dashboards (DAX) improving decision cycle time by <strong>22%</strong>.</li>
+              <li>Structured reconciliations across systems; cut reporting discrepancies by <strong>11%</strong>.</li>
+            </ul>
+            <div class="tagline" aria-label="Skills">
+              <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">SQL</span><span class="tag">UAT</span><span class="tag">Audits</span>
+            </div>
+          </article>
+
+          <!-- Mindoula -->
+          <article class="card xp-card" role="listitem" aria-labelledby="xp-mindoula-title">
+            <div class="xp-top">
+              <div class="logo-dot" aria-hidden="true">M</div>
+              <div>
+                <div class="client" id="xp-mindoula-title">Mindoula</div>
+                <div class="role">Business Analyst — Operations Analytics</div>
+              </div>
+            </div>
+            <div class="xp-meta" aria-label="Dates and location">
+              <span class="meta-chip">🗓️ Jul&nbsp;2024 – Mar&nbsp;2025</span>
+              <span class="meta-chip">📍 Silver Spring, MD</span>
+            </div>
+            <ul class="xp-highlights">
+              <li>Captured & prioritized requirements; authored BRDs/FRDs & user stories with crisp acceptance criteria (−16% rework).</li>
+              <li>Delivered SQL + Power BI reports for operational KPIs; <strong>+12% tracking accuracy</strong>.</li>
+              <li>Gap analysis & root-cause remediation preventing recurrence across four releases.</li>
+            </ul>
+            <div class="tagline" aria-label="Skills">
+              <span class="tag">BRD/FRD</span><span class="tag">User Stories</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Visio/Lucidchart</span>
+            </div>
+          </article>
+
+          <!-- Dotsquare -->
+          <article class="card xp-card" role="listitem" aria-labelledby="xp-dotsquare-title">
+            <div class="xp-top">
+              <div class="logo-dot" aria-hidden="true">D</div>
+              <div>
+                <div class="client" id="xp-dotsquare-title">Dotsquare Technologies India Pvt. Ltd</div>
+                <div class="role">Data Analyst</div>
+              </div>
+            </div>
+            <div class="xp-meta" aria-label="Dates and location">
+              <span class="meta-chip">🗓️ May&nbsp;2020 – Apr&nbsp;2022</span>
+              <span class="meta-chip">📍 India</span>
+            </div>
+            <ul class="xp-highlights">
+              <li>ETL & consolidation of multi-source datasets with <strong>98% accuracy</strong>; 100+ reports (Power BI/Excel).</li>
+              <li>Automated refresh pipelines; +18% dashboard performance.</li>
+              <li>Data quality fixes reduced reporting errors by <strong>13%</strong>.</li>
+            </ul>
+            <div class="tagline" aria-label="Skills">
+              <span class="tag">ETL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BRANDS -->
+      <section id="brands" class="section" aria-labelledby="brands-title" style="margin-top:40px">
+        <h2 id="brands-title">Work for all this <span style="color:var(--accent-2)">Brand & Client</span></h2>
+        <p class="muted">A few platforms and tools I use day-to-day.</p>
+        <div class="brand-bg" aria-hidden="true">
+          <div class="brand-sphere">
+            <div class="logo-grid">
+              <div class="logo">Azure</div><div class="logo">Snowflake</div><div class="logo">Power BI</div>
+              <div class="logo">SQL</div><div class="logo">Python</div><div class="logo">Excel</div>
+              <div class="logo">Tableau</div><div class="logo">Jira</div><div class="logo">Confluence</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section" aria-labelledby="projects-title" style="margin-top:40px">
+        <h2 id="projects-title">Recent <span style="color:var(--accent-2)">Projects</span></h2>
+        <div class="projects" style="margin-top:14px" role="list">
+          <article class="project" role="listitem">
+            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" alt="Revenue dashboard preview" loading="lazy"/>
+            <div class="p-body"><span class="tag">Power BI</span><h3>Revenue &amp; Collections Cockpit</h3><p class="muted">Executive dashboard with DAX measures, anomaly alerts, and SLA tracking.</p></div>
+          </article>
+          <article class="project" role="listitem">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop" alt="SQL code and charts" loading="lazy"/>
+            <div class="p-body"><span class="tag">SQL</span><h3>Reconciliation Framework</h3><p class="muted">Automated cross-system checks that reduced reporting discrepancies by 11%.</p></div>
+          </article>
+          <article class="project" role="listitem">
+            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1400&auto=format&fit=crop" alt="Compliance and testing visuals" loading="lazy"/>
+            <div class="p-body"><span class="tag">BA</span><h3>Compliance UAT Suite</h3><p class="muted">Traceable test packs for HIPAA/PCI workflows; 14% verification efficiency gain.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section id="certs" class="section" aria-labelledby="certs-title" style="margin-top:40px">
+        <h2 id="certs-title">Professional <span style="color:var(--accent-2)">Certifications</span></h2>
+        <p class="muted">A snapshot of credentials that back my analytics and platform skills.</p>
+
+        <div class="certs" role="list">
+          <!-- AZ-900 Cert Prep: Azure Architecture & Security (LinkedIn Learning) -->
+          <article class="cert" role="listitem">
+            <img class="thumb" src="cert-az900-archsec.png" alt="LinkedIn Learning: AZ-900 Cert Prep 2 — Azure Architecture & Security certificate" loading="lazy" data-full="cert-az900-archsec.png">
+            <div class="c-body">
+              <h3>AZ-900 Cert Prep: Azure Architecture & Security</h3>
+              <p class="muted">LinkedIn Learning • Completed Apr 04, 2024 • 1h 59m</p>
+              <div class="tagline" aria-label="Skills"><span class="pill">Microsoft Azure</span> <span class="pill">Cloud Security</span></div>
+            </div>
+          </article>
+
+          <!-- Salesforce Certified Administrator -->
+          <article class="cert" role="listitem">
+            <img class="thumb" src="cert-salesforce-admin.png" alt="Salesforce Certified Administrator certificate" loading="lazy" data-full="cert-salesforce-admin.png">
+            <div class="c-body">
+              <h3>Salesforce Certified Administrator</h3>
+              <p class="muted">Salesforce • Issued Jul 11, 2023 • Credential ID 3526807</p>
+            </div>
+          </article>
+
+          <!-- Microsoft Certified: Azure Fundamentals -->
+          <article class="cert" role="listitem">
+            <img class="thumb" src="cert-azure-fundamentals.png" alt="Microsoft Certified: Azure Fundamentals certificate" loading="lazy" data-full="cert-azure-fundamentals.png">
+            <div class="c-body">
+              <h3>Microsoft Certified: Azure Fundamentals</h3>
+              <p class="muted">Microsoft • Earned Jun 24, 2023 • Cert No. 6CE48C S284B6</p>
+            </div>
+          </article>
+
+          <!-- SQL Essential Training -->
+          <article class="cert" role="listitem">
+            <img class="thumb" src="cert-sql-essential.png" alt="LinkedIn Learning: SQL Essential Training certificate" loading="lazy" data-full="cert-sql-essential.png">
+            <div class="c-body">
+              <h3>SQL Essential Training</h3>
+              <p class="muted">LinkedIn Learning • Completed Mar 15, 2024 • 4h 26m</p>
+              <div class="tagline"><span class="pill">SQL</span></div>
+            </div>
+          </article>
+
+          <!-- Power BI Essential Training -->
+          <article class="cert" role="listitem">
+            <img class="thumb" src="cert-powerbi-essential.png" alt="LinkedIn Learning: Power BI Essential Training certificate" loading="lazy" data-full="cert-powerbi-essential.png">
+            <div class="c-body">
+              <h3>Power BI Essential Training</h3>
+              <p class="muted">LinkedIn Learning • Completed Mar 21, 2024 • 3h 49m</p>
+              <div class="tagline"><span class="pill">Microsoft Power BI</span></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Lightbox -->
+        <dialog class="lightbox" id="lightbox" aria-label="Certificate preview">
+          <button class="close" type="button" aria-label="Close">✕</button>
+          <img id="lightbox-img" src="" alt="">
+        </dialog>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section" aria-labelledby="contact-title" style="margin-top:40px">
+        <h2 id="contact-title">Let’s work together</h2>
+        <div class="grid">
+          <div class="card" aria-labelledby="contact-info-title">
+            <h3 id="contact-info-title">Contact Information</h3>
+            <p class="muted">I’m based in Pittsburgh, PA — available for full-time roles and freelance analytics projects.</p>
+            <p><strong>Email:</strong> <a href="mailto:Kaushickgunturi@gmail.com">Kaushickgunturi@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+14128086629">+1 (412) 808-6629</a></p>
+            <div class="cta-row" style="margin-top:10px">
+              <a class="btn btn-primary" href="mailto:Kaushickgunturi@gmail.com">Start a project</a>
+              <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Socials</h3>
+            <p><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></p>
+            <p><a href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer role="contentinfo">© <span id="y"></span> Kaushick Varma Gunturi — All rights reserved.</footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', storedTheme || (systemDark ? 'dark' : 'light'));
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next); localStorage.setItem('theme', next);
+    });
+
+    // Active nav link on scroll
+    const sections = [...document.querySelectorAll('main .section')];
+    const links = [...document.querySelectorAll('.nav-link')];
+    const setActive = () => {
+      const y = window.scrollY + (window.innerHeight * 0.25);
+      let currentId = sections[0]?.id;
+      for (const sec of sections) { const top = sec.offsetTop - 100; if (y >= top) currentId = sec.id; }
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + currentId));
+    };
+    setActive(); window.addEventListener('scroll', setActive); window.addEventListener('resize', setActive);
+
+    // Lightbox for certifications
+    const dlg = document.getElementById('lightbox');
+    const dlgImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.cert .thumb').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        dlgImg.src = img.dataset.full; dlgImg.alt = img.alt;
+        dlg.showModal();
+      });
+    });
+    dlg.querySelector('.close').addEventListener('click', ()=> dlg.close());
+    dlg.addEventListener('click', (e)=>{ if(e.target === dlg) dlg.close(); });
+
+    // Darken navbar on scroll
+    const header = document.querySelector("header.nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        header.style.background =
+          root.getAttribute('data-theme') === 'dark'
+            ? "linear-gradient(90deg, rgba(13,18,34,.85) 0%, rgba(12,16,29,.85) 100%)"
+            : "linear-gradient(90deg, rgba(235,243,255,0.95) 0%, rgba(220,235,255,0.95) 100%)";
+        header.style.boxShadow = "0 3px 15px rgba(59,130,246,0.15)";
+      } else {
+        header.style.background =
+          root.getAttribute('data-theme') === 'dark'
+            ? "linear-gradient(90deg, rgba(13,18,34,.8) 0%, rgba(12,16,29,.8) 100%)"
+            : "linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(236,244,255,0.9) 50%, rgba(225,240,255,0.85) 100%)";
+        header.style.boxShadow = "0 2px 12px rgba(59,130,246,0.1)";
+      }
+    });
+
+    // Respect reduced motion for hash links
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+  </script>
+</body>
+</html>
