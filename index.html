@@ -9,292 +9,204 @@
   <link rel="icon" href="favicon.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ================== Sunrise Light Theme ================== */
+    /* ==================== AQUA NOIR THEME (dark, vivid accents) ==================== */
     :root{
-      --bg1:#fffaf5;           /* warm white */
-      --bg2:#f4f7ff;           /* soft blue tint */
-      --panel:#ffffff;
-      --ink:#1f2937;           /* slate-800 */
-      --muted:#6b7280;         /* gray-500 */
-      --line:#e7e9ef;          /* light border */
-      --shadow:0 12px 30px rgba(17,24,39,.08);
+      --bg-1:#060914;           /* near-black */
+      --bg-2:#0b1226;           /* deep navy */
+      --panel:#0e172a;          /* card base */
+      --ink:#e7f0ff;            /* text */
+      --muted:#a1b4d9;          /* secondary text */
+      --line:#1b2c4f;           /* borders */
+      --glass:rgba(255,255,255,.06);
 
-      --accent-a:#f97316;      /* orange-500 */
-      --accent-b:#f59e0b;      /* amber-500 */
-      --accent-c:#6366f1;      /* indigo-500 */
-      --accent-d:#06b6d4;      /* cyan-500 */
-      --accent-e:#10b981;      /* emerald-500 */
-      --accent-f:#ef4444;      /* red-500 */
+      --c-cyan:#22d3ee;
+      --c-blue:#60a5fa;
+      --c-violet:#a78bfa;
+      --c-pink:#fb7185;
+      --c-lime:#84cc16;
 
       --radius:18px;
+      --shadow:0 24px 70px rgba(3,10,24,.65);
       --nav-h:70px;
 
-      --display:"Fraunces", ui-serif, Georgia, serif;
-      --text:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --display:"Outfit", system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      --text:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;
-      font-family:var(--text);
-      color:var(--ink);
+      margin:0; color:var(--ink); font-family:var(--text);
       background:
-        radial-gradient(900px 600px at 6% -10%, rgba(249,115,22,.14), transparent 60%),
-        radial-gradient(900px 600px at 94% 0%, rgba(99,102,241,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2) 60%, #fff 100%);
+        radial-gradient(900px 600px at 6% -10%, rgba(34,211,238,.12), transparent 60%),
+        radial-gradient(900px 600px at 96% 8%, rgba(96,165,250,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
       background-attachment:fixed;
     }
-    a{color:#0f172a; text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%; display:block}
+    a{color:var(--c-blue); text-decoration:none} a:hover{text-decoration:underline}
 
+    /* ============= NAV ============= */
+    header.nav{
+      position:sticky; top:0; z-index:50; height:var(--nav-h);
+      backdrop-filter:blur(12px);
+      background:linear-gradient(90deg, rgba(11,18,38,.7), rgba(11,18,38,.35));
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
+    .brand{font:800 18px/1 var(--display); letter-spacing:.3px}
+    nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
+    nav a{color:#cfe0ff; font-weight:700; font-size:14px; padding:10px 12px; border-radius:10px}
+    nav a.active,.pill-link{background:rgba(34,211,238,.12); text-decoration:none; border:1px solid #1f355f}
+
+    /* ============= LAYOUT HELPERS ============= */
     .container{max-width:1180px; margin:0 auto; padding:48px 20px}
     .section{scroll-margin-top:calc(var(--nav-h) + 20px)}
     .muted{color:var(--muted)}
+    h2{font-family:var(--display); font-size:32px; margin:0 0 14px}
 
-    /* ============== Nav ============== */
-    header.nav{
-      position:sticky; top:0; z-index:50; height:var(--nav-h);
-      backdrop-filter:blur(10px);
-      background:linear-gradient(90deg, rgba(255,255,255,.9), rgba(245,247,255,.9));
-      border-bottom:1px solid #eef1f7;
-    }
-    .nav-inner{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
-    .brand{font:800 20px/1 var(--text); letter-spacing:.2px}
-    nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
-    nav a{color:#334155; font-weight:700; font-size:14px; padding:10px 12px; border-radius:10px}
-    nav a.active{background:#f1f5ff}
-    .theme-toggle{display:none} /* light-only theme */
-
-    /* ============== Hero ============== */
-    .hero{display:grid; grid-template-columns:1.2fr .9fr; gap:40px; align-items:center; padding:30px 0 44px}
-    .kicker{color:#9aa5b1; font:800 12px/1 var(--text); letter-spacing:.18em; text-transform:uppercase}
+    /* ============= HERO ============= */
+    .hero{display:grid; grid-template-columns:1.15fr .95fr; gap:40px; align-items:center}
+    .kicker{color:#7ea2da; font:800 12px/1 var(--text); letter-spacing:.18em; text-transform:uppercase}
     h1{
-      font-family:var(--display);
-      font-weight:800;
-      font-size:clamp(40px,6vw,68px);
-      line-height:1.02; margin:12px 0 10px;
-      background:linear-gradient(92deg, var(--accent-a), var(--accent-b) 45%, var(--accent-c) 100%);
+      font-family:var(--display); font-weight:800; margin:10px 0 10px;
+      font-size:clamp(40px,6.4vw,76px); line-height:1.02;
+      background:linear-gradient(92deg, var(--c-cyan), var(--c-blue) 40%, var(--c-violet) 70%, var(--c-pink) 100%);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .lead{color:#475569; font-size:clamp(16px,2vw,18px); max-width:65ch}
-    .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px}
-    .btn{display:inline-block; padding:14px 20px; border-radius:12px; font-weight:800; transition:transform .15s ease, filter .15s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(249,115,22,.18)}
-    .btn-primary{background:linear-gradient(135deg, var(--accent-a), var(--accent-b)); color:#fff;}
-    .btn-ghost{background:#fff; border:1px solid var(--line); color:#111827}
+    .lead{color:#c9dbff; font-size:clamp(16px,2vw,18px); max-width:62ch}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; font-weight:800; border:1px solid #24406f; background:rgba(255,255,255,.04); color:var(--ink); box-shadow:var(--shadow); transition:.2s transform,.2s filter}
+    .btn:hover{transform:translateY(-2px); filter:saturate(1.1)}
+    .btn-primary{background:linear-gradient(135deg, var(--c-cyan), var(--c-violet)); color:#04101f}
 
+    /* Portrait */
     .art{position:relative; display:grid; place-items:center}
-    .halo{
-      position:absolute; width:min(420px,76vw); height:min(420px,76vw); border-radius:50%;
-      background:conic-gradient(from 0deg, rgba(249,115,22,.35), rgba(245,158,11,.25), rgba(99,102,241,.28), rgba(249,115,22,.35));
-      filter:blur(22px); opacity:.5; z-index:-1; animation:spin 22s linear infinite;
+    .neon{
+      position:absolute; width:min(440px,78vw); height:min(440px,78vw); border-radius:50%;
+      background:conic-gradient(from 0deg, rgba(34,211,238,.55), rgba(96,165,250,.45), rgba(167,139,250,.45), rgba(251,113,133,.45), rgba(34,211,238,.55));
+      filter:blur(26px); opacity:.42; z-index:-1; animation:spin 22s linear infinite;
     }
     @keyframes spin{to{transform:rotate(360deg)}}
-    .headshot{
-      width:min(360px,72vw); height:min(360px,72vw); border-radius:26px;
-      object-fit:cover; border:3px solid #fff; box-shadow:0 20px 50px rgba(17,24,39,.15);
-    }
-    .badge{
-      position:absolute; right:2%; top:6%; background:#fff; padding:10px 14px; border-radius:999px;
-      border:1px solid #eef1f7; font-weight:800; font-size:13px; color:#0b1324; box-shadow:var(--shadow);
-    }
+    .headshot{width:min(360px,72vw); height:min(360px,72vw); border-radius:26px; object-fit:cover; border:2px solid rgba(255,255,255,.2); box-shadow:0 30px 80px rgba(0,0,0,.6)}
+    .badge{position:absolute; right:0; top:6%; background:rgba(255,255,255,.08); border:1px solid var(--line); padding:8px 12px; border-radius:12px; font-weight:800; font-size:12px}
 
-    /* ============== Cards / Grid ============== */
+    /* ============= CARDS / GRID ============= */
     .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:22px}
-    .card{
-      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
-      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover{transform:translateY(-4px); box-shadow:0 18px 50px rgba(17,24,39,.12); border-color:#e0e6f2}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); backdrop-filter:blur(10px);
+      border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+    .card:hover{transform:translateY(-4px); box-shadow:0 28px 70px rgba(2,6,23,.75); border-color:#2d4d8b}
+
     .xp-top{display:flex; gap:14px; align-items:center; margin-bottom:8px}
-    .logo-dot{width:42px; height:42px; border-radius:12px; background:#fff7ed; border:1px solid #ffedd5; display:grid; place-items:center; font-weight:800; color:#f97316;}
-    .client{font:800 18px/1.2 var(--text)} .role{font-weight:700; color:#0f172a}
-    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#64748b; font-weight:600}
-    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px}
-    .xp-highlights{margin-top:10px; padding-left:18px} .xp-highlights li{margin:6px 0}
+    .logo-dot{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,#0b1427,#0d1a33); border:1px solid var(--line); display:grid; place-items:center; font-weight:800; color:#7aa7ff}
+    .client{font:800 18px/1.2 var(--text)} .role{font-weight:700; color:#e9f2ff}
+    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#b3c4eb; font-weight:600}
+    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px}
+    .xp-highlights{margin-top:8px; padding-left:18px} .xp-highlights li{margin:6px 0}
     .tagline{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px}
-    .tag{font-size:12px; background:#eef2ff; border:1px solid #e0e7ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-weight:700}
+    .tag{font-size:12px; background:rgba(96,165,250,.18); border:1px solid #2a4a80; color:#b4d1ff; padding:6px 10px; border-radius:999px; font-weight:700}
 
-    /* ============== ✨ BRANDS — Fancy Orbit Showcase ============== */
-    .brand-wrap{margin-top:24px;}
-    .brand-card{
-      position:relative;
-      border-radius:28px;
-      border:1px solid #e9eef9;
-      background:linear-gradient(180deg,#ffffff, #f9fbff);
-      box-shadow:
-        0 24px 60px rgba(17,24,39,.10),
-        0 2px 0 #fff inset;
-      padding:48px 24px;
-      overflow:hidden;
+    /* ============= BRANDS (badge ring) ============= */
+    .brands-wrap{margin-top:28px}
+    .brand-slab{
+      position:relative; border-radius:28px; border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:var(--shadow); padding:46px 20px; overflow:hidden;
     }
-    /* subtle glow corners */
-    .brand-card::before,
-    .brand-card::after{
-      content:"";
-      position:absolute; inset:auto -20% -30% -20%;
-      height:200px;
-      background:radial-gradient(closest-side, rgba(251,191,36,.25), transparent 60%);
-      filter:blur(30px);
-      z-index:0;
-    }
-    .brand-card::after{
-      inset:-30% -20% auto -20%;
-      background:radial-gradient(closest-side, rgba(99,102,241,.25), transparent 60%);
-    }
+    .brand-ring{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; width:min(680px,92vw); margin:0 auto}
+    .chip{display:grid; place-items:center; height:48px; border-radius:14px; font-weight:800; color:#cfe3ff;
+      border:1px solid #264774; background:rgba(255,255,255,.05); box-shadow:inset 0 0 22px rgba(34,211,238,.06)}
+    .chip:nth-child(odd){border-color:#2a3f7c}
+    .chip:hover{background:rgba(34,211,238,.12)}
 
-    .brand-orbit{
-      position:relative;
-      width:min(640px, 90vw);
-      height:min(640px, 90vw);
-      margin:0 auto;
-      border-radius:50%;
-      border:2px solid #eef2fb;
-      background:radial-gradient(circle at 50% 50%, #ffffff, #f7fbff 65%);
-      box-shadow:inset 0 8px 30px rgba(15,23,42,.05);
-      z-index:1;
-    }
-    .brand-center{
-      position:absolute; inset:0; margin:auto;
-      width:160px; height:160px; border-radius:30px;
-      background:#ffffff; border:1px solid #eef1f7; box-shadow:var(--shadow);
-      display:grid; place-items:center; text-align:center; padding:12px;
-      font-weight:800; color:#111827;
-    }
-    .brand-center small{display:block; font-weight:700; color:#6b7280; margin-top:4px}
-
-    /* orbiting chips */
-    .chip{
-      --r: 220px;             /* orbit radius */
-      --i: 0;                 /* index angle */
-      --h: 210;               /* hue */
-      position:absolute;
-      left:50%; top:50%;
-      transform:
-        rotate(calc(var(--i) * 1deg))
-        translate(var(--r))
-        rotate(calc(var(--i) * -1deg));
-      transition:transform .2s ease;
-      animation:orbit 26s linear infinite;
-      animation-delay: calc(var(--i) * -0.02s);
-    }
-    .chip:hover{z-index:2; transform:
-      rotate(calc(var(--i) * 1deg))
-      translate(calc(var(--r) + 6px))
-      rotate(calc(var(--i) * -1deg)) scale(1.04)}
-    .brand-orbit:hover .chip{animation-play-state:paused}
-
-    .chip > span{
-      display:inline-flex; align-items:center; gap:8px;
-      background:hsla(var(--h), 90%, 96%, 1);
-      border:1px solid hsla(var(--h), 80%, 82%, .7);
-      color:hsl(var(--h), 55%, 28%);
-      font-weight:800; padding:10px 14px; border-radius:14px;
-      box-shadow:0 8px 18px rgba(17,24,39,.08);
-      white-space:nowrap;
-    }
-    .chip > span i{font-style:normal; opacity:.9}
-
-    @keyframes orbit{
-      to{ transform:
-        rotate(calc(var(--i) * 1deg + 360deg))
-        translate(var(--r))
-        rotate(calc(var(--i) * -1deg - 360deg)); }
-    }
-
-    /* ============== Projects ============== */
-    .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
-    .project{overflow:hidden; border-radius:var(--radius); background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
-    .project img{width:100%; height:170px; object-fit:cover}
+    /* ============= PROJECT CARDS ============= */
+    .project{overflow:hidden; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border:1px solid var(--line); box-shadow:var(--shadow)}
+    .project img{width:100%; height:170px; object-fit:cover; display:block; filter:saturate(1.08)}
     .project .p-body{padding:14px}
     .project h3{margin:8px 0 6px; font-family:var(--display)}
 
-    /* ============== Certifications ============== */
+    /* ============= CERTIFICATIONS ============= */
     .certs{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:22px}
-    .cert{overflow:hidden; border-radius:16px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
-    .cert .thumb{width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#f3f4f6; border-bottom:1px solid var(--line)}
+    .cert{overflow:hidden; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid var(--line); box-shadow:var(--shadow)}
+    .cert .thumb{width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#0f1831; border-bottom:1px solid var(--line)}
     .cert .c-body{padding:14px}
     .cert h3{margin:6px 0 6px; font:700 18px/1.2 var(--display)}
-    .pill{display:inline-block; font-size:12px; background:#fff7ed; border:1px solid #ffedd5; color:#9a3412; padding:6px 10px; border-radius:999px; font-weight:700}
+    .pill{display:inline-block; font-size:12px; background:rgba(34,211,238,.16); border:1px solid #2a6970; color:#9be8f0; padding:6px 10px; border-radius:999px; font-weight:700}
 
-    /* ============== Socials ============== */
-    .socials a{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; margin:6px 10px 0 0;
-      background:#fff; border:1px solid var(--line); border-radius:999px;
-      font-weight:700; color:#0f172a; box-shadow:var(--shadow);
-      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .socials a:hover{transform:translateY(-2px); border-color:#e0e6f2}
-    .socials .li::before{content:"in"; display:inline-grid; place-items:center; width:22px; height:22px; border-radius:6px; font-size:12px; background:#2563eb; color:#fff; font-weight:800}
-    .socials .gh::before{content:"</>"; display:inline-grid; place-items:center; width:22px; height:22px; border-radius:6px; font-size:11px; background:#111827; color:#fff; font-weight:800}
+    /* ============= LIGHTBOX ============= */
+    dialog.lightbox{border:none; padding:0; max-width:min(96vw,1200px); width:fit-content; background:transparent}
+    dialog::backdrop{background:rgba(5,10,25,.8)}
+    .lightbox img{max-height:85vh; width:auto; height:auto; display:block; border-radius:12px}
+    .lightbox .close{position:absolute; top:10px; right:10px; background:rgba(255,255,255,.08); border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:800; color:var(--ink)}
 
-    /* Footer */
-    footer{padding:60px 0 80px; text-align:center; color:#64748b}
+    /* ============= CONTACT ============= */
+    .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:22px}
+    .contact-card,.social-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
+    .socials{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px}
+    .s-btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; border:1px solid #284a82; background:rgba(255,255,255,.04); font-weight:800}
+    .s-btn:hover{background:rgba(96,165,250,.12)}
+    .s-btn .dot{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:6px; font-size:12px; color:#04101f; font-weight:900}
+    .dot.li{background:var(--c-blue)} .dot.gh{background:#e2e8f0}
 
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .art{order:-1}
-      .badge{top:auto; bottom:6%}
-      .brand-orbit{width:88vw; height:88vw}
-      .chip{--r: 34vw;}
-      .brand-center{width:36vw; height:36vw}
-    }
+    /* ============= FOOTER ============= */
+    footer{padding:50px 20px 70px; text-align:center; color:#a7c0ff}
+    .pulse{position:fixed; inset:auto -30% -40% -30%; height:280px; z-index:-1; background:radial-gradient(closest-side, rgba(34,211,238,.22), transparent 60%); filter:blur(40px); animation:float 10s ease-in-out infinite}
+    .pulse::after{content:""; position:absolute; inset:-40% -20% auto -20%; height:220px; background:radial-gradient(closest-side, rgba(167,139,250,.18), transparent 60%); filter:blur(40px)}
+    @keyframes float{50%{transform:translateY(-10px)}}
+
+    /* ============= RESPONSIVE ============= */
+    @media (max-width:980px){ .hero{grid-template-columns:1fr} .art{order:-1} .badge{top:auto; bottom:6%} .brand-ring{grid-template-columns:repeat(2,1fr)} }
   </style>
 </head>
 <body>
-  <!-- Header / Nav -->
-  <header class="nav" role="banner">
+
+  <!-- NAV -->
+  <header class="nav">
     <div class="nav-inner">
       <div class="brand">K. V. Gunturi</div>
       <nav aria-label="Primary">
         <ul>
           <li><a class="nav-link" href="#hero">Home</a></li>
           <li><a class="nav-link" href="#experience">Experience</a></li>
-          <li><a class="nav-link" href="#brands">Brands</a></li>
+          <li><a class="nav-link" href="#brands">Tools</a></li>
           <li><a class="nav-link" href="#projects">Projects</a></li>
           <li><a class="nav-link" href="#certs">Certifications</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="nav-link pill-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Theme">🎨</button>
     </div>
   </header>
 
+  <!-- HERO -->
   <main id="main" tabindex="-1">
     <div class="container section" id="hero">
-      <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
         <div>
           <p class="kicker">Business Analyst</p>
-          <h1 id="hero-title">Hi! I am<br/>Kaushick Varma Gunturi</h1>
+          <h1 id="hero-title">Kaushick Varma Gunturi</h1>
           <p class="lead">I turn business questions into measurable insights and clear decisions using SQL, Python, Power BI, and modern data platforms.</p>
-          <div class="cta-row">
+          <div class="cta">
             <a class="btn btn-primary" href="#contact">Hire Me</a>
-            <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
+            <a class="btn" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
           </div>
         </div>
         <div class="art" aria-hidden="true">
-          <div class="halo"></div>
-          <img class="headshot" src="profile-placeholder.png" alt="Portrait of Kaushick Varma Gunturi" loading="lazy" />
+          <div class="neon"></div>
+          <img class="headshot" src="profile-placeholder.png" alt="Portrait of Kaushick Varma Gunturi" loading="lazy">
           <div class="badge">🏆 Best Data Project</div>
         </div>
       </section>
 
       <!-- EXPERIENCE -->
-      <section id="experience" class="section" aria-labelledby="exp-title" style="margin-top:10px">
-        <h2 id="exp-title" style="margin:4px 0 16px; font-family:var(--display); font-size:32px;">Professional <span style="color:var(--accent-a)">Experience</span></h2>
-
+      <section id="experience" class="section" aria-labelledby="exp-title" style="margin-top:14px">
+        <h2 id="exp-title">Experience</h2>
         <div class="grid" role="list">
-          <!-- REPAY -->
           <article class="card" role="listitem">
             <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">R</div>
+              <div class="logo-dot">R</div>
               <div>
                 <div class="client">REPAY (Realtime Electronic Payments)</div>
                 <div class="role">Business Analyst — Compliance & Reporting</div>
@@ -309,10 +221,9 @@
             <div class="tagline"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">SQL</span><span class="tag">UAT</span><span class="tag">Audits</span></div>
           </article>
 
-          <!-- Mindoula -->
           <article class="card" role="listitem">
             <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">M</div>
+              <div class="logo-dot">M</div>
               <div>
                 <div class="client">Mindoula</div>
                 <div class="role">Business Analyst — Operations Analytics</div>
@@ -327,10 +238,9 @@
             <div class="tagline"><span class="tag">BRD/FRD</span><span class="tag">User Stories</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Visio/Lucidchart</span></div>
           </article>
 
-          <!-- Dotsquare -->
           <article class="card" role="listitem">
             <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">D</div>
+              <div class="logo-dot">D</div>
               <div>
                 <div class="client">Dotsquare Technologies India Pvt. Ltd</div>
                 <div class="role">Data Analyst</div>
@@ -347,62 +257,50 @@
         </div>
       </section>
 
-      <!-- BRANDS (New Attractive Showcase) -->
-      <section id="brands" class="section brand-wrap" aria-labelledby="brands-title">
-        <h2 id="brands-title" style="font-family:var(--display); font-size:34px; margin-bottom:8px;">
-          Work for all this <span style="color:var(--accent-a)">Brand &amp; Client</span>
-        </h2>
-        <p class="muted" style="margin-top:0">A few platforms and tools I use day-to-day.</p>
-
-        <div class="brand-card" aria-hidden="true">
-          <div class="brand-orbit">
-            <div class="brand-center">
-              Tools I Use
-              <small>Analytics • Data • Ops</small>
-            </div>
-
-            <!-- Orbiting chips: set angle with --i and hue with --h -->
-            <div class="chip" style="--i: 10; --h: 210;"><span><i>🔷</i> Azure</span></div>
-            <div class="chip" style="--i: 50; --h: 190;"><span><i>❄️</i> Snowflake</span></div>
-            <div class="chip" style="--i: 90; --h: 255;"><span><i>📊</i> Power BI</span></div>
-            <div class="chip" style="--i: 130; --h: 180;"><span><i>🧮</i> SQL</span></div>
-            <div class="chip" style="--i: 170; --h: 160;"><span><i>🐍</i> Python</span></div>
-            <div class="chip" style="--i: 210; --h: 30;"><span><i>📑</i> Excel</span></div>
-            <div class="chip" style="--i: 250; --h: 270;"><span><i>📈</i> Tableau</span></div>
-            <div class="chip" style="--i: 290; --h: 330;"><span><i>🧰</i> Jira</span></div>
-            <div class="chip" style="--i: 330; --h: 20;"><span><i>📘</i> Confluence</span></div>
+      <!-- BRANDS / TOOLS -->
+      <section id="brands" class="section brands-wrap" aria-labelledby="brands-title">
+        <h2 id="brands-title">Tools & Platforms</h2>
+        <p class="muted">Daily stack I use across analytics, data, and operations.</p>
+        <div class="brand-slab">
+          <div class="brand-ring">
+            <div class="chip">Azure</div>
+            <div class="chip">Snowflake</div>
+            <div class="chip">Power BI</div>
+            <div class="chip">SQL</div>
+            <div class="chip">Python</div>
+            <div class="chip">Excel</div>
+            <div class="chip">Tableau</div>
+            <div class="chip">Jira</div>
+            <div class="chip">Confluence</div>
           </div>
         </div>
       </section>
 
       <!-- PROJECTS -->
-      <section id="projects" class="section" aria-labelledby="projects-title" style="margin-top:36px">
-        <h2 id="projects-title" style="font-family:var(--display); font-size:32px;">Recent <span style="color:var(--accent-a)">Projects</span></h2>
-        <div class="projects" style="margin-top:14px" role="list">
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <h2 id="projects-title">Recent Projects</h2>
+        <div class="grid" role="list">
           <article class="project" role="listitem">
             <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" alt="Revenue dashboard preview" loading="lazy"/>
-            <div class="p-body"><span class="tag">Power BI</span><h3>Revenue &amp; Collections Cockpit</h3><p class="muted">Executive dashboard with DAX measures, anomaly alerts, and SLA tracking.</p></div>
+            <div class="p-body"><span class="pill">Power BI</span><h3>Revenue &amp; Collections Cockpit</h3><p class="muted">Executive dashboard with DAX measures, anomaly alerts, and SLA tracking.</p></div>
           </article>
           <article class="project" role="listitem">
             <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop" alt="SQL code and charts" loading="lazy"/>
-            <div class="p-body"><span class="tag">SQL</span><h3>Reconciliation Framework</h3><p class="muted">Automated cross-system checks that reduced reporting discrepancies by 11%.</p></div>
+            <div class="p-body"><span class="pill">SQL</span><h3>Reconciliation Framework</h3><p class="muted">Automated cross-system checks that reduced reporting discrepancies by 11%.</p></div>
           </article>
           <article class="project" role="listitem">
             <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1400&auto=format&fit=crop" alt="Compliance and testing visuals" loading="lazy"/>
-            <div class="p-body"><span class="tag">BA</span><h3>Compliance UAT Suite</h3><p class="muted">Traceable test packs for HIPAA/PCI workflows; 14% verification efficiency gain.</p></div>
+            <div class="p-body"><span class="pill">BA</span><h3>Compliance UAT Suite</h3><p class="muted">Traceable test packs for HIPAA/PCI workflows; 14% verification efficiency gain.</p></div>
           </article>
         </div>
       </section>
 
       <!-- CERTIFICATIONS -->
-      <section id="certs" class="section" aria-labelledby="certs-title" style="margin-top:36px">
-        <h2 id="certs-title" style="font-family:var(--display); font-size:32px; text-align:center;">Professional <span style="color:var(--accent-a)">Certifications</span></h2>
-        <p class="muted" style="text-align:center;">Credentials that back my analytics and platform skills.</p>
-
+      <section id="certs" class="section" aria-labelledby="certs-title">
+        <h2 id="certs-title">Professional Certifications</h2>
         <div class="certs" role="list">
           <article class="cert" role="listitem">
-            <img class="thumb" src="cert-az900-archsec.png" data-full="cert-az900-archsec.png"
-                 alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security" loading="lazy">
+            <img class="thumb" src="cert-az900-archsec.png" data-full="cert-az900-archsec.png" alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security" loading="lazy">
             <div class="c-body">
               <h3>AZ-900 Cert Prep: Azure Architecture & Security</h3>
               <p class="muted">LinkedIn Learning • Apr 04, 2024 • 1h 59m</p>
@@ -411,8 +309,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="cert-salesforce-admin.png" data-full="cert-salesforce-admin.png"
-                 alt="Salesforce Certified Administrator" loading="lazy">
+            <img class="thumb" src="cert-salesforce-admin.png" data-full="cert-salesforce-admin.png" alt="Salesforce Certified Administrator" loading="lazy">
             <div class="c-body">
               <h3>Salesforce Certified Administrator</h3>
               <p class="muted">Salesforce • Issued Jul 11, 2023 • Credential ID 3526807</p>
@@ -420,8 +317,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="cert-azure-fundamentals.png" data-full="cert-azure-fundamentals.png"
-                 alt="Microsoft Certified: Azure Fundamentals" loading="lazy">
+            <img class="thumb" src="cert-azure-fundamentals.png" data-full="cert-azure-fundamentals.png" alt="Microsoft Certified: Azure Fundamentals" loading="lazy">
             <div class="c-body">
               <h3>Microsoft Certified: Azure Fundamentals</h3>
               <p class="muted">Microsoft • Earned Jun 24, 2023 • Cert No. 6CE48C S284B6</p>
@@ -429,8 +325,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="cert-sql-essential.png" data-full="cert-sql-essential.png"
-                 alt="LinkedIn Learning: SQL Essential Training" loading="lazy">
+            <img class="thumb" src="cert-sql-essential.png" data-full="cert-sql-essential.png" alt="LinkedIn Learning: SQL Essential Training" loading="lazy">
             <div class="c-body">
               <h3>SQL Essential Training</h3>
               <p class="muted">LinkedIn Learning • Mar 15, 2024 • 4h 26m</p>
@@ -439,8 +334,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="cert-powerbi-essential.png" data-full="cert-powerbi-essential.png"
-                 alt="LinkedIn Learning: Power BI Essential Training" loading="lazy">
+            <img class="thumb" src="cert-powerbi-essential.png" data-full="cert-powerbi-essential.png" alt="LinkedIn Learning: Power BI Essential Training" loading="lazy">
             <div class="c-body">
               <h3>Power BI Essential Training</h3>
               <p class="muted">LinkedIn Learning • Mar 21, 2024 • 3h 49m</p>
@@ -450,34 +344,33 @@
         </div>
 
         <!-- Lightbox -->
-        <dialog class="lightbox" id="lightbox" aria-label="Certificate preview" style="border:none; padding:0; background:transparent; max-width:min(96vw,1200px);">
-          <button class="close" type="button" aria-label="Close" style="position:absolute; top:8px; right:8px; background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:6px 10px; font-weight:800; cursor:pointer;">✕</button>
-          <img id="lightbox-img" src="" alt="" style="max-height:85vh; border-radius:12px; display:block;">
+        <dialog class="lightbox" id="lightbox" aria-label="Certificate preview">
+          <button class="close" type="button" aria-label="Close">✕</button>
+          <img id="lightbox-img" src="" alt="">
         </dialog>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="section" aria-labelledby="contact-title" style="margin-top:36px">
-        <h2 id="contact-title" style="font-family:var(--display); font-size:32px;">Let’s work together</h2>
-        <div class="grid">
-          <div class="card">
-            <h3 style="font-family:var(--display); margin-top:0;">Contact Information</h3>
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Let’s work together</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 style="margin-top:0;font-family:var(--display)">Contact Information</h3>
             <p class="muted">I’m based in Pittsburgh, PA — available for full-time roles and freelance analytics projects.</p>
             <p><strong>Email:</strong> <a href="mailto:Kaushickgunturi@gmail.com">Kaushickgunturi@gmail.com</a></p>
             <p><strong>Phone:</strong> <a href="tel:+14128086629">+1 (412) 808-6629</a></p>
-            <div class="cta-row" style="margin-top:10px">
+            <div class="cta">
               <a class="btn btn-primary" href="mailto:Kaushickgunturi@gmail.com">Start a project</a>
-              <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
+              <a class="btn" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
             </div>
           </div>
 
-          <!-- Socials -->
-          <div class="card">
-            <h3 style="font-family:var(--display); margin-top:0;">Socials</h3>
+          <div class="social-card">
+            <h3 style="margin-top:0;font-family:var(--display)">Socials</h3>
             <p class="muted" style="margin-top:-6px">Connect with me:</p>
             <div class="socials">
-              <a class="li" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="gh" href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a>
+              <a class="s-btn" href="https://www.linkedin.com" target="_blank" rel="noopener"><span class="dot li">in</span> LinkedIn</a>
+              <a class="s-btn" href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener"><span class="dot gh">&lt;/&gt;</span> GitHub</a>
             </div>
           </div>
         </div>
@@ -485,7 +378,10 @@
     </div>
   </main>
 
-  <footer role="contentinfo">© <span id="y"></span> Kaushick Varma Gunturi — All rights reserved.</footer>
+  <footer role="contentinfo">
+    <div class="pulse"></div>
+    © <span id="y"></span> Kaushick Varma Gunturi — All rights reserved.
+  </footer>
 
   <script>
     // Footer year
@@ -494,15 +390,15 @@
     // Active nav link on scroll
     const sections=[...document.querySelectorAll('main .section')];
     const links=[...document.querySelectorAll('.nav-link')];
-    const setActive=()=>{
+    function setActive(){
       const y=window.scrollY + (window.innerHeight*0.25);
       let current=sections[0]?.id;
       for(const sec of sections){ if(y >= sec.offsetTop-120) current = sec.id; }
       links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
-    };
+    }
     setActive(); window.addEventListener('scroll', setActive); window.addEventListener('resize', setActive);
 
-    // Lightbox for cert images
+    // Lightbox
     const dlg=document.getElementById('lightbox');
     const img=document.getElementById('lightbox-img');
     document.querySelectorAll('.cert .thumb').forEach(t=>{
