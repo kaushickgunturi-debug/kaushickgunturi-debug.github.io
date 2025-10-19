@@ -9,122 +9,163 @@
   <link rel="icon" href="favicon.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
 
   <style>
-    /* ================== Look & Feel ================== */
+    /* ================== Sunrise Light Theme ================== */
     :root{
-      --bg1:#0f172a; --bg2:#0b1224;
-      --ink:#e6ebff; --muted:#9fb0cf; --line:#223052;
-      --accent-a:#7c3aed; --accent-b:#22d3ee; --accent-c:#60a5fa;
-      --glass:rgba(255,255,255,.06); --shadow:0 24px 60px rgba(2,6,23,.4);
-      --nav-h:70px; --radius:20px;
-      --display:"Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      --text:"Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      /* Palette */
+      --bg1:#fffaf5;           /* warm white */
+      --bg2:#f4f7ff;           /* soft blue tint */
+      --panel:#ffffff;
+      --ink:#1f2937;           /* slate-800 */
+      --muted:#6b7280;         /* gray-500 */
+      --line:#e7e9ef;          /* light border */
+      --shadow:0 12px 30px rgba(17,24,39,.08);
+
+      --accent-a:#f97316;      /* orange-500 */
+      --accent-b:#f59e0b;      /* amber-500 */
+      --accent-c:#6366f1;      /* indigo-500 */
+
+      --radius:18px;
+      --nav-h:70px;
+
+      --display:"Fraunces", ui-serif, Georgia, serif;
+      --text:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--text); color:var(--ink);
+      margin:0;
+      font-family:var(--text);
+      color:var(--ink);
       background:
-        radial-gradient(900px 600px at 6% 0%, rgba(124,58,237,.14), transparent 60%),
-        radial-gradient(900px 600px at 94% 8%, rgba(34,211,238,.1), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 600px at 6% -10%, rgba(249,115,22,.14), transparent 60%),
+        radial-gradient(900px 600px at 94% 0%, rgba(99,102,241,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 60%, #fff 100%);
       background-attachment:fixed;
     }
-    a{color:var(--accent-c); text-decoration:none} a:hover{text-decoration:underline}
+    a{color:#0f172a; text-decoration:none}
+    a:hover{text-decoration:underline}
     img{max-width:100%; display:block}
 
-    /* Layout */
     .container{max-width:1180px; margin:0 auto; padding:48px 20px}
     .section{scroll-margin-top:calc(var(--nav-h) + 20px)}
     .muted{color:var(--muted)}
 
-    /* Nav */
+    /* ============== Nav ============== */
     header.nav{
       position:sticky; top:0; z-index:50; height:var(--nav-h);
-      backdrop-filter:blur(12px);
-      background:linear-gradient(90deg, rgba(11,18,36,.6), rgba(11,18,36,.2));
-      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+      background:linear-gradient(90deg, rgba(255,255,255,.9), rgba(245,247,255,.9));
+      border-bottom:1px solid #eef1f7;
     }
     .nav-inner{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
-    .brand{font:800 18px/1 var(--display); letter-spacing:.4px}
+    .brand{font:800 20px/1 var(--text); letter-spacing:.2px}
     nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
-    nav a{color:#cfe0ff; font-weight:700; font-size:14px; padding:10px 12px; border-radius:10px}
-    nav a.active{background:rgba(96,165,250,.14); text-decoration:none}
-    .theme-toggle{margin-left:10px; border:1px solid var(--line); background:transparent; padding:8px 12px; border-radius:12px; font-weight:700; color:var(--ink); cursor:pointer}
+    nav a{color:#334155; font-weight:700; font-size:14px; padding:10px 12px; border-radius:10px}
+    nav a.active{background:#f1f5ff}
+    .theme-toggle{display:none} /* light-only theme */
 
-    /* Hero */
+    /* ============== Hero ============== */
     .hero{display:grid; grid-template-columns:1.2fr .9fr; gap:40px; align-items:center; padding:30px 0 44px}
-    .kicker{color:#a9bbdf; font:800 12px/1 var(--text); letter-spacing:.18em; text-transform:uppercase}
-    h1{font-family:var(--display); font-weight:700; font-size:clamp(40px,6.2vw,72px); line-height:1.02; margin:12px 0 10px;
-      background:linear-gradient(92deg, var(--accent-b), var(--accent-c) 40%, var(--accent-a) 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;}
-    .lead{color:#c7d6ff; font-size:clamp(16px,2vw,18px); max-width:65ch}
+    .kicker{color:#9aa5b1; font:800 12px/1 var(--text); letter-spacing:.18em; text-transform:uppercase}
+    h1{
+      font-family:var(--display);
+      font-weight:800;
+      font-size:clamp(40px,6vw,68px);
+      line-height:1.02; margin:12px 0 10px;
+      background:linear-gradient(92deg, var(--accent-a), var(--accent-b) 45%, var(--accent-c) 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .lead{color:#475569; font-size:clamp(16px,2vw,18px); max-width:65ch}
     .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px}
-    .btn{display:inline-block; padding:14px 20px; border-radius:14px; font-weight:800; transition:.18s transform, .18s filter, .18s box-shadow}
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:linear-gradient(135deg, var(--accent-b), var(--accent-a)); color:#07111f; box-shadow:0 12px 30px rgba(124,58,237,.35)}
-    .btn-ghost{background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--ink)}
+    .btn{display:inline-block; padding:14px 20px; border-radius:12px; font-weight:800; transition:transform .15s ease, filter .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(249,115,22,.18)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent-a), var(--accent-b)); color:#fff;}
+    .btn-ghost{background:#fff; border:1px solid var(--line); color:#111827}
 
     /* Portrait */
     .art{position:relative; display:grid; place-items:center}
-    .ring{position:absolute; width:min(420px,76vw); height:min(420px,76vw); border-radius:50%;
-      background:conic-gradient(from 0deg, var(--accent-b), var(--accent-a), var(--accent-c), var(--accent-b));
-      filter:blur(24px); opacity:.25; z-index:-1; animation:spin 16s linear infinite}
+    .halo{
+      position:absolute; width:min(420px,76vw); height:min(420px,76vw); border-radius:50%;
+      background:conic-gradient(from 0deg, rgba(249,115,22,.35), rgba(245,158,11,.25), rgba(99,102,241,.28), rgba(249,115,22,.35));
+      filter:blur(22px); opacity:.5; z-index:-1; animation:spin 22s linear infinite;
+    }
     @keyframes spin{to{transform:rotate(360deg)}}
-    .headshot{width:min(360px,72vw); height:min(360px,72vw); border-radius:28px; object-fit:cover; border:2px solid rgba(255,255,255,.2); box-shadow:0 30px 80px rgba(0,0,0,.5)}
-    .badge{position:absolute; right:2%; top:6%; background:rgba(255,255,255,.08); padding:10px 14px; border-radius:999px; border:1px solid var(--line); backdrop-filter:blur(8px); font-weight:800; font-size:13px}
+    .headshot{
+      width:min(360px,72vw); height:min(360px,72vw); border-radius:26px;
+      object-fit:cover; border:3px solid #fff; box-shadow:0 20px 50px rgba(17,24,39,.15);
+    }
+    .badge{
+      position:absolute; right:2%; top:6%; background:#fff; padding:10px 14px; border-radius:999px;
+      border:1px solid #eef1f7; font-weight:800; font-size:13px; color:#0b1324; box-shadow:var(--shadow);
+    }
 
-    /* Cards */
+    /* ============== Cards / Grid ============== */
     .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:22px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); backdrop-filter:blur(10px);
-      border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-    .card:hover{transform:translateY(-4px); box-shadow:0 28px 70px rgba(2,6,23,.55); border-color:#2f467c}
+    .card{
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 18px 50px rgba(17,24,39,.12); border-color:#e0e6f2}
     .xp-top{display:flex; gap:14px; align-items:center; margin-bottom:8px}
-    .logo-dot{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, #0e1a34, #0c162b); border:1px solid var(--line); display:grid; place-items:center; font-weight:800; color:#7aa7ff; box-shadow:inset 0 0 16px rgba(96,165,250,.12)}
-    .client{font:800 18px/1.2 var(--text)} .role{font-weight:700; color:#dfe6fb}
-    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#b9c9ef; font-weight:600}
-    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px}
+    .logo-dot{width:42px; height:42px; border-radius:12px; background:#fff7ed; border:1px solid #ffedd5; display:grid; place-items:center; font-weight:800; color:#f97316;}
+    .client{font:800 18px/1.2 var(--text)} .role{font-weight:700; color:#0f172a}
+    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#64748b; font-weight:600}
+    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px}
     .xp-highlights{margin-top:10px; padding-left:18px} .xp-highlights li{margin:6px 0}
     .tagline{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px}
-    .tag{font-size:12px; background:rgba(96,165,250,.14); border:1px solid #24406f; color:#9ec5ff; padding:6px 10px; border-radius:999px; font-weight:700}
+    .tag{font-size:12px; background:#eef2ff; border:1px solid #e0e7ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-weight:700}
 
-    /* Brands */
-    .brand-bg{position:relative; margin-top:24px; padding:74px 0; display:flex; justify-content:center; align-items:center}
-    .brand-bg::before{content:""; position:absolute; inset:0; width:85%; max-width:900px; height:360px; margin:auto; background:var(--glass);
-      border:1px solid var(--line); border-radius:40px; box-shadow:var(--shadow); z-index:0}
-    .brand-sphere{position:relative; z-index:2; width:260px; height:260px; border-radius:50%; background:radial-gradient(120% 120% at 30% 30%, #0d1326, #0f1831 60%, #0b1226); border:1px solid var(--line); display:grid; place-items:center}
+    /* ============== Brands ============== */
+    .brand-bg{position:relative; margin-top:24px; padding:70px 0; display:flex; justify-content:center; align-items:center}
+    .brand-bg::before{
+      content:""; position:absolute; inset:0; width:85%; max-width:900px; height:360px; margin:auto;
+      background:linear-gradient(180deg, #ffffff, #f8fbff); border:1px solid #eef1f7; border-radius:40px; box-shadow:var(--shadow);
+    }
+    .brand-sphere{position:relative; z-index:2; width:260px; height:260px; border-radius:50%;
+      background:radial-gradient(120% 120% at 30% 30%, #fff, #f6f9ff 60%, #eef4ff);
+      border:1px solid #eef1f7; display:grid; place-items:center}
     .logo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:70%}
-    .logo{background:var(--glass); border:1px solid var(--line); border-radius:12px; height:46px; display:grid; place-items:center; font:800 13px/1 var(--text); color:#a8bce7}
+    .logo{background:#fff; border:1px solid #eef1f7; border-radius:12px; height:46px; display:grid; place-items:center; font:800 13px/1 var(--text); color:#64748b}
 
-    /* Projects */
+    /* ============== Projects ============== */
     .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
-    .project{overflow:hidden; border-radius:var(--radius); background:var(--glass); border:1px solid var(--line); box-shadow:var(--shadow)}
-    .project img{width:100%; height:170px; object-fit:cover; display:block; filter:saturate(1.05)}
+    .project{overflow:hidden; border-radius:var(--radius); background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
+    .project img{width:100%; height:170px; object-fit:cover}
     .project .p-body{padding:14px}
     .project h3{margin:8px 0 6px; font-family:var(--display)}
 
-    /* Certifications */
+    /* ============== Certifications ============== */
     .certs{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:22px}
-    .cert{overflow:hidden; border-radius:18px; background:var(--glass); border:1px solid var(--line); box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease}
-    .cert:hover{transform:translateY(-4px); box-shadow:0 28px 70px rgba(2,6,23,.55)}
-    .cert .thumb{width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#0d162b; border-bottom:1px solid var(--line)}
+    .cert{overflow:hidden; border-radius:16px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
+    .cert .thumb{width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:#f3f4f6; border-bottom:1px solid var(--line)}
     .cert .c-body{padding:14px}
     .cert h3{margin:6px 0 6px; font:700 18px/1.2 var(--display)}
-    .pill{display:inline-block; font-size:12px; background:rgba(34,211,238,.16); border:1px solid #2a6970; color:#9be8f0; padding:6px 10px; border-radius:999px; font-weight:700}
+    .pill{display:inline-block; font-size:12px; background:#fff7ed; border:1px solid #ffedd5; color:#9a3412; padding:6px 10px; border-radius:999px; font-weight:700}
 
-    /* Lightbox */
-    dialog.lightbox{border:none; padding:0; max-width:min(96vw,1200px); width:fit-content; background:transparent}
-    dialog::backdrop{background:rgba(5,10,25,.7)}
-    .lightbox img{max-height:85vh; width:auto; height:auto; display:block; border-radius:12px}
-    .lightbox .close{position:absolute; top:10px; right:10px; background:rgba(255,255,255,.08); border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:800; color:var(--ink)}
+    /* ============== Socials (new pill buttons) ============== */
+    .socials a{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; margin:6px 10px 0 0;
+      background:#fff; border:1px solid var(--line); border-radius:999px;
+      font-weight:700; color:#0f172a; box-shadow:var(--shadow);
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .socials a:hover{transform:translateY(-2px); border-color:#e0e6f2}
+    .socials .li::before{content:"in"; display:inline-grid; place-items:center; width:22px; height:22px; border-radius:6px; font-size:12px; background:#2563eb; color:#fff; font-weight:800}
+    .socials .gh::before{content:"</>"; display:inline-grid; place-items:center; width:22px; height:22px; border-radius:6px; font-size:11px; background:#111827; color:#fff; font-weight:800}
 
     /* Footer */
-    footer{padding:60px 0 80px; text-align:center; color:#9fb0cf}
+    footer{padding:60px 0 80px; text-align:center; color:#64748b}
 
-    /* Responsive */
-    @media (max-width:980px){ .hero{grid-template-columns:1fr} .art{order:-1} .badge{top:auto; bottom:6%} }
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .art{order:-1}
+      .badge{top:auto; bottom:6%}
+    }
   </style>
 </head>
 <body>
@@ -142,7 +183,7 @@
           <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Toggle theme">🌓</button>
+      <button class="theme-toggle" type="button" aria-label="Theme">🎨</button>
     </div>
   </header>
 
@@ -160,7 +201,7 @@
           </div>
         </div>
         <div class="art" aria-hidden="true">
-          <div class="ring"></div>
+          <div class="halo"></div>
           <img class="headshot" src="profile-placeholder.png" alt="Portrait of Kaushick Varma Gunturi" loading="lazy" />
           <div class="badge">🏆 Best Data Project</div>
         </div>
@@ -168,7 +209,7 @@
 
       <!-- EXPERIENCE -->
       <section id="experience" class="section" aria-labelledby="exp-title" style="margin-top:10px">
-        <h2 id="exp-title" style="margin:4px 0 16px; font-family:var(--display); font-size:32px;">Professional <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Experience</span></h2>
+        <h2 id="exp-title" style="margin:4px 0 16px; font-family:var(--display); font-size:32px;">Professional <span style="color:var(--accent-a)">Experience</span></h2>
 
         <div class="grid" role="list">
           <!-- REPAY -->
@@ -229,7 +270,7 @@
 
       <!-- BRANDS -->
       <section id="brands" class="section" aria-labelledby="brands-title" style="margin-top:36px">
-        <h2 id="brands-title" style="font-family:var(--display); font-size:32px;">Work for all this <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Brand & Client</span></h2>
+        <h2 id="brands-title" style="font-family:var(--display); font-size:32px;">Work for all this <span style="color:var(--accent-a)">Brand & Client</span></h2>
         <p class="muted">A few platforms and tools I use day-to-day.</p>
         <div class="brand-bg" aria-hidden="true">
           <div class="brand-sphere">
@@ -244,7 +285,7 @@
 
       <!-- PROJECTS -->
       <section id="projects" class="section" aria-labelledby="projects-title" style="margin-top:36px">
-        <h2 id="projects-title" style="font-family:var(--display); font-size:32px;">Recent <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Projects</span></h2>
+        <h2 id="projects-title" style="font-family:var(--display); font-size:32px;">Recent <span style="color:var(--accent-a)">Projects</span></h2>
         <div class="projects" style="margin-top:14px" role="list">
           <article class="project" role="listitem">
             <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" alt="Revenue dashboard preview" loading="lazy"/>
@@ -263,11 +304,10 @@
 
       <!-- CERTIFICATIONS -->
       <section id="certs" class="section" aria-labelledby="certs-title" style="margin-top:36px">
-        <h2 id="certs-title" style="font-family:var(--display); font-size:32px; text-align:center;">Professional <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Certifications</span></h2>
+        <h2 id="certs-title" style="font-family:var(--display); font-size:32px; text-align:center;">Professional <span style="color:var(--accent-a)">Certifications</span></h2>
         <p class="muted" style="text-align:center;">Credentials that back my analytics and platform skills.</p>
 
         <div class="certs" role="list">
-          <!-- Use the exact filenames in your repo root -->
           <article class="cert" role="listitem">
             <img class="thumb" src="cert-az900-archsec.png" data-full="cert-az900-archsec.png"
                  alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security" loading="lazy">
@@ -338,10 +378,15 @@
               <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
             </div>
           </div>
+
+          <!-- New Socials look -->
           <div class="card">
             <h3 style="font-family:var(--display); margin-top:0;">Socials</h3>
-            <p><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></p>
-            <p><a href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a></p>
+            <p class="muted" style="margin-top:-6px">Connect with me:</p>
+            <div class="socials">
+              <a class="li" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="gh" href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a>
+            </div>
           </div>
         </div>
       </section>
@@ -354,22 +399,13 @@
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Theme toggle (optional)
-    const root = document.documentElement;
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) root.setAttribute('data-theme', storedTheme);
-    document.querySelector('.theme-toggle').addEventListener('click', ()=>{
-      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next); localStorage.setItem('theme', next);
-    });
-
     // Active nav link on scroll
     const sections=[...document.querySelectorAll('main .section')];
     const links=[...document.querySelectorAll('.nav-link')];
     const setActive=()=>{
       const y=window.scrollY + (window.innerHeight*0.25);
       let current=sections[0]?.id;
-      for(const sec of sections){if(y >= sec.offsetTop-120) current = sec.id;}
+      for(const sec of sections){ if(y >= sec.offsetTop-120) current = sec.id; }
       links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
     };
     setActive(); window.addEventListener('scroll', setActive); window.addEventListener('resize', setActive);
