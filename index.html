@@ -3,438 +3,154 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Kaushick Varma Gunturi — Business Analyst</title>
-  <meta name="description" content="Business Analyst turning questions into measurable insights with SQL, Python, Power BI, and modern data platforms. Based in Pittsburgh, PA." />
-  <link rel="icon" href="favicon.png" />
-
-  <!-- Fonts -->
+  <title>Kaushick Varma Gunturi — Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Social cards -->
-  <meta property="og:title" content="Kaushick Varma Gunturi — Business Analyst" />
-  <meta property="og:description" content="I turn business questions into measurable insights with SQL, Python, Power BI." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="profile-og.png" />
-  <meta property="og:url" content="https://your-domain.example/" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <style>
-    /* ================== New Look: Fonts, Palette & Motion ================== */
-    :root{
-      /* Palette */
-      --bg1:#0f172a;   /* deep slate */
-      --bg2:#0b1224;   /* navy */
-      --panel:#0f1a35cc;
-      --ink:#e6ebff;
-      --muted:#9fb0cf;
+    :root {
+      --bg1:#0f172a;
+      --bg2:#0b1224;
       --line:#223052;
-
-      --accent-a:#7c3aed; /* violet */
-      --accent-b:#22d3ee; /* cyan */
-      --accent-c:#60a5fa; /* blue */
-
-      --white:#ffffff;
-      --glass:rgba(255,255,255,.06);
-      --shadow:0 24px 60px rgba(2,6,23,.4);
-
-      --radius-xl:22px; --radius-lg:18px; --radius-full:999px;
-      --nav-h:70px;
-
-      /* Typography */
-      --display:"Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      --text:"Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+      --text:#e6ebff;
+      --muted:#9fb0cf;
+      --accent1:#7c3aed;
+      --accent2:#22d3ee;
+      --accent3:#60a5fa;
+      --shadow:0 12px 40px rgba(0,0,0,0.4);
+      --font-display:"Space Grotesk",sans-serif;
+      --font-body:"Plus Jakarta Sans",sans-serif;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
+    body {
       margin:0;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      font-family:var(--text);
-      color:var(--ink);
-      background:
-        radial-gradient(1000px 600px at 5% 0%, rgba(124,58,237,.15), transparent 60%),
-        radial-gradient(900px 600px at 95% 10%, rgba(34,211,238,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      background-attachment:fixed;
+      font-family:var(--font-body);
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
     }
-    a{color:var(--accent-c); text-decoration:none} a:hover{text-decoration:underline}
-    img{max-width:100%; display:block}
 
-    /* ============== Layout ============== */
-    .container{max-width:1180px; margin:0 auto; padding:48px 20px}
-    .section{scroll-margin-top:calc(var(--nav-h) + 20px)}
-    .muted{color:var(--muted)}
+    header {
+      text-align:center;
+      padding:40px 10px 10px;
+    }
 
-    /* ============== Nav ============== */
-    header.nav{
-      position:sticky; top:0; z-index:50; height:var(--nav-h);
-      backdrop-filter:blur(12px);
-      background:linear-gradient(90deg, rgba(11,18,36,.6), rgba(11,18,36,.2));
+    h1 {
+      font-family:var(--font-display);
+      font-size:2.5rem;
+      background:linear-gradient(90deg,var(--accent2),var(--accent3));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .container {
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    .certs {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+    }
+
+    .cert {
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .cert:hover {
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .cert .thumb {
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+      background:#0d162b;
       border-bottom:1px solid var(--line);
     }
-    .nav-inner{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between}
-    .brand{font:800 18px/1 var(--display); letter-spacing:.4px}
-    nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
-    nav a{color:#cfe0ff; font-weight:700; font-size:14px; padding:10px 12px; border-radius:10px}
-    nav a.active{background:rgba(96,165,250,.14); text-decoration:none}
-    .theme-toggle{margin-left:10px; border:1px solid var(--line); background:transparent; padding:8px 12px; border-radius:12px; font-weight:700; color:var(--ink); cursor:pointer}
 
-    /* ============== Hero ============== */
-    .hero{display:grid; grid-template-columns:1.2fr .9fr; gap:40px; align-items:center; padding:30px 0 44px}
-    .kicker{color:#a9bbdf; font:800 12px/1 var(--text); letter-spacing:.18em; text-transform:uppercase}
-    h1{
-      font-family:var(--display);
+    .cert .thumb:hover { transform:scale(1.02); transition:transform 0.2s; }
+
+    .cert .c-body {
+      padding:16px;
+    }
+
+    .cert h3 {
+      font-family:var(--font-display);
+      font-size:1rem;
+      margin:6px 0;
+    }
+
+    .cert p {
+      color:var(--muted);
+      font-size:0.9rem;
+      line-height:1.4;
+      margin:0 0 8px;
+    }
+
+    .pill {
+      display:inline-block;
+      font-size:12px;
+      background:rgba(34,211,238,.16);
+      border:1px solid #2a6970;
+      color:#9be8f0;
+      padding:5px 10px;
+      border-radius:999px;
+      margin-right:6px;
       font-weight:700;
-      font-size:clamp(40px,6.2vw,72px);
-      line-height:1.02; margin:12px 0 10px;
-      /* Gradient name */
-      background:linear-gradient(92deg, var(--accent-b), var(--accent-c) 40%, var(--accent-a) 100%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .lead{color:#c7d6ff; font-size:clamp(16px,2vw,18px); max-width:65ch}
-    .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px}
-    .btn{display:inline-block; padding:14px 20px; border-radius:14px; font-weight:800; transition:.18s transform, .18s filter, .18s box-shadow}
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:linear-gradient(135deg, var(--accent-b), var(--accent-a)); color:#07111f; box-shadow:0 12px 30px rgba(124,58,237,.35)}
-    .btn-ghost{background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--ink)}
-
-    /* Fancy portrait ring */
-    .art{position:relative; display:grid; place-items:center}
-    .ring{
-      position:absolute; inset:auto; width:min(420px,76vw); height:min(420px,76vw);
-      border-radius:50%;
-      background:conic-gradient(from 180deg, var(--accent-b), var(--accent-a), var(--accent-c), var(--accent-b));
-      filter:blur(24px); opacity:.25; z-index:-1; animation:spin 16s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .headshot{
-      width:min(360px,72vw); height:min(360px,72vw); border-radius:28px;
-      object-fit:cover; border:2px solid rgba(255,255,255,.2);
-      box-shadow:0 30px 80px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.08);
-    }
-    .badge{position:absolute; right:2%; top:6%; background:rgba(255,255,255,.08); padding:10px 14px; border-radius:999px; border:1px solid var(--line); backdrop-filter:blur(8px); font-weight:800; font-size:13px}
-
-    /* ============== Cards / Grid ============== */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:22px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      backdrop-filter:blur(10px);
-      border:1px solid var(--line); border-radius:20px; padding:22px;
-      box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover{transform:translateY(-4px); box-shadow:0 28px 70px rgba(2,6,23,.55); border-color:#2f467c}
-
-    /* Experience */
-    .xp-top{display:flex; gap:14px; align-items:center; margin-bottom:8px}
-    .logo-dot{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, #0e1a34, #0c162b); border:1px solid var(--line); display:grid; place-items:center; font-weight:800; color:#7aa7ff; box-shadow:inset 0 0 16px rgba(96,165,250,.12)}
-    .client{font:800 18px/1.2 var(--text)}
-    .role{font-weight:700; color:#dfe6fb}
-    .xp-meta{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 12px; color:#b9c9ef; font-weight:600}
-    .meta-chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid var(--line); padding:8px 12px; border-radius:999px; font-size:13px}
-    .xp-highlights{margin-top:10px; padding-left:18px}
-    .xp-highlights li{margin:6px 0}
-    .tagline{margin-top:12px; display:flex; flex-wrap:wrap; gap:8px}
-    .tag{font-size:12px; background:rgba(96,165,250,.14); border:1px solid #24406f; color:#9ec5ff; padding:6px 10px; border-radius:999px; font-weight:700}
-
-    /* Brands (kept minimal) */
-    .brand-bg{position:relative; margin-top:24px; padding:74px 0; display:flex; justify-content:center; align-items:center}
-    .brand-bg::before{
-      content:""; position:absolute; inset:0; width:85%; max-width:900px; height:360px; margin:auto;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line); border-radius:40px; box-shadow:var(--shadow); z-index:0;
-    }
-    .brand-sphere{position:relative; z-index:2; width:260px; height:260px; border-radius:50%;
-      background:radial-gradient(120% 120% at 30% 30%, #0d1326, #0f1831 60%, #0b1226);
-      border:1px solid var(--line); display:grid; place-items:center}
-    .logo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:70%}
-    .logo{background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:12px; height:46px; display:grid; place-items:center; font:800 13px/1 var(--text); color:#a8bce7}
-
-    /* Projects */
-    .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
-    .project{overflow:hidden; border-radius:20px; background:rgba(255,255,255,.06); border:1px solid var(--line); box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease}
-    .project:hover{transform:translateY(-4px); box-shadow:0 28px 70px rgba(2,6,23,.55)}
-    .project img{width:100%; height:170px; object-fit:cover; display:block; filter:saturate(1.05)}
-    .project .p-body{padding:14px}
-    .project h3{margin:8px 0 6px; font-family:var(--display)}
-
-    /* Certifications */
-    .certs{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px}
-    .cert{overflow:hidden; border-radius:18px; background:rgba(255,255,255,.06); border:1px solid var(--line); box-shadow:var(--shadow)}
-    .cert .thumb{width:100%; height:180px; object-fit:cover; display:block; cursor:zoom-in; transition:transform .18s ease}
-    .cert .thumb:hover{transform:scale(1.02)}
-    .cert .c-body{padding:14px}
-    .cert h3{margin:6px 0 6px; font:700 18px/1.2 var(--display)}
-    .pill{display:inline-block; font-size:12px; background:rgba(34,211,238,.16); border:1px solid #2a6970; color:#9be8f0; padding:6px 10px; border-radius:999px; font-weight:700}
-
-    /* Lightbox */
-    dialog.lightbox{border:none; padding:0; max-width:min(96vw,1200px); width:fit-content; background:transparent}
-    dialog::backdrop{background:rgba(5,10,25,.7)}
-    .lightbox img{max-height:85vh; width:auto; height:auto; display:block; border-radius:12px}
-    .lightbox .close{position:absolute; top:10px; right:10px; background:rgba(255,255,255,.08); border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer; font-weight:800; color:var(--ink)}
-
-    /* Footer */
-    footer{padding:60px 0 80px; text-align:center; color:#9fb0cf}
-
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .art{order:-1}
-      .badge{top:auto; bottom:6%}
     }
 
-    /* Focus styles */
-    :where(a,button,[tabindex]):focus-visible{outline:3px solid var(--accent-b); outline-offset:3px; border-radius:10px}
+    footer {
+      text-align:center;
+      padding:40px;
+      color:#9fb0cf;
+      font-size:0.9rem;
+    }
+
+    /* fallback image if missing */
+    img.thumb[onerror] {
+      background:#0d162b;
+    }
   </style>
-
-  <!-- Schema (unchanged, trimmed) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Kaushick Varma Gunturi",
-    "jobTitle":"Business Analyst",
-    "email":"mailto:Kaushickgunturi@gmail.com",
-    "telephone":"+1-412-808-6629",
-    "address": { "@type":"PostalAddress", "addressLocality":"Pittsburgh", "addressRegion":"PA", "addressCountry":"US" }
-  }
-  </script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="nav" role="banner">
-    <div class="nav-inner">
-      <div class="brand">K. V. Gunturi</div>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a class="nav-link" href="#hero">Home</a></li>
-          <li><a class="nav-link" href="#experience">Experience</a></li>
-          <li><a class="nav-link" href="#brands">Brands</a></li>
-          <li><a class="nav-link" href="#projects">Projects</a></li>
-          <li><a class="nav-link" href="#certs">Certifications</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Toggle theme">🌓</button>
-    </div>
+  <header>
+    <h1>Professional Certifications</h1>
+    <p>Credentials that back my analytics and platform skills.</p>
   </header>
 
-  <main id="main" tabindex="-1">
-    <div class="container section" id="hero">
-      <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <p class="kicker">Business Analyst</p>
-          <h1 id="hero-title">Hi! I am<br/>Kaushick Varma Gunturi</h1>
-          <p class="lead">I turn business questions into measurable insights and clear decisions using SQL, Python, Power BI, and modern data platforms.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#contact">Hire Me</a>
-            <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
-          </div>
+  <main class="container">
+    <section class="certs">
+      <article class="cert">
+        <img class="thumb" src="assets/certs/cert-az900-archsec.png"
+             data-full="assets/certs/cert-az900-archsec.png"
+             alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d162b%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%239fb0cf%22 font-family=%22sans-serif%22 font-size=%2220%22>Image Not Found</text></svg>';">
+        <div class="c-body">
+          <h3>AZ-900 Cert Prep: Azure Architecture & Security</h3>
+          <p>LinkedIn Learning • Apr 04, 2024 • 1h 59m</p>
+          <span class="pill">Microsoft Azure</span>
+          <span class="pill">Cloud Security</span>
         </div>
+      </article>
 
-        <div class="art" aria-hidden="true">
-          <div class="ring"></div>
-          <img class="headshot" src="profile-placeholder.png" alt="Portrait of Kaushick Varma Gunturi" loading="lazy" />
-          <div class="badge">🏆 Best Data Project</div>
+      <article class="cert">
+        <img class="thumb" src="assets/certs/cert-salesforce-admin.png"
+             data-full="assets/certs/cert-salesforce-admin.png"
+             alt="Salesforce Certified Administrator"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d162b%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%239fb0cf%22 font-family=%22sans-serif%22 font-size=%2220%22>Image Not Found</text></svg>';">
+        <div class="c-body">
+          <h3>Salesforce Certified Administrator</h3>
+          <p>Salesforce • Issued Jul 11, 2023 • Credential ID 3526807</p>
         </div>
-      </section>
+      </article>
 
-      <!-- EXPERIENCE -->
-      <section id="experience" class="section" aria-labelledby="exp-title" style="margin-top:10px">
-        <h2 id="exp-title" style="margin:4px 0 16px; font-family:var(--display); font-size:32px;">Professional <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Experience</span></h2>
-
-        <div class="grid" role="list">
-          <!-- REPAY -->
-          <article class="card" role="listitem">
-            <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">R</div>
-              <div>
-                <div class="client">REPAY (Realtime Electronic Payments)</div>
-                <div class="role">Business Analyst — Compliance & Reporting</div>
-              </div>
-            </div>
-            <div class="xp-meta"><span class="meta-chip">🗓️ Apr&nbsp;2025 – Present</span><span class="meta-chip">📍 Louisville, KY</span></div>
-            <ul class="xp-highlights">
-              <li>Led data validation & UAT for compliance workflows; <strong>+14% verification efficiency</strong> and reduced post-release defects.</li>
-              <li>Designed Power BI KPI dashboards (DAX) improving decision cycle time by <strong>22%</strong>.</li>
-              <li>Structured reconciliations across systems; cut reporting discrepancies by <strong>11%</strong>.</li>
-            </ul>
-            <div class="tagline"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">SQL</span><span class="tag">UAT</span><span class="tag">Audits</span></div>
-          </article>
-
-          <!-- Mindoula -->
-          <article class="card" role="listitem">
-            <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">M</div>
-              <div>
-                <div class="client">Mindoula</div>
-                <div class="role">Business Analyst — Operations Analytics</div>
-              </div>
-            </div>
-            <div class="xp-meta"><span class="meta-chip">🗓️ Jul&nbsp;2024 – Mar&nbsp;2025</span><span class="meta-chip">📍 Silver Spring, MD</span></div>
-            <ul class="xp-highlights">
-              <li>Authored BRDs/FRDs & user stories with crisp acceptance criteria (−16% rework).</li>
-              <li>Delivered SQL + Power BI reports for operational KPIs; <strong>+12% tracking accuracy</strong>.</li>
-              <li>Root-cause remediation preventing recurrence across four releases.</li>
-            </ul>
-            <div class="tagline"><span class="tag">BRD/FRD</span><span class="tag">User Stories</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Visio/Lucidchart</span></div>
-          </article>
-
-          <!-- Dotsquare -->
-          <article class="card" role="listitem">
-            <div class="xp-top">
-              <div class="logo-dot" aria-hidden="true">D</div>
-              <div>
-                <div class="client">Dotsquare Technologies India Pvt. Ltd</div>
-                <div class="role">Data Analyst</div>
-              </div>
-            </div>
-            <div class="xp-meta"><span class="meta-chip">🗓️ May&nbsp;2020 – Apr&nbsp;2022</span><span class="meta-chip">📍 India</span></div>
-            <ul class="xp-highlights">
-              <li>ETL & consolidation with <strong>98% accuracy</strong>; 100+ reports (Power BI/Excel).</li>
-              <li>Automated refresh pipelines; +18% dashboard performance.</li>
-              <li>Data quality fixes reduced reporting errors by <strong>13%</strong>.</li>
-            </ul>
-            <div class="tagline"><span class="tag">ETL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span></div>
-          </article>
-        </div>
-      </section>
-
-      <!-- BRANDS -->
-      <section id="brands" class="section" aria-labelledby="brands-title" style="margin-top:36px">
-        <h2 id="brands-title" style="font-family:var(--display); font-size:32px;">Work for all this <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Brand & Client</span></h2>
-        <p class="muted">A few platforms and tools I use day-to-day.</p>
-        <div class="brand-bg" aria-hidden="true">
-          <div class="brand-sphere">
-            <div class="logo-grid">
-              <div class="logo">Azure</div><div class="logo">Snowflake</div><div class="logo">Power BI</div>
-              <div class="logo">SQL</div><div class="logo">Python</div><div class="logo">Excel</div>
-              <div class="logo">Tableau</div><div class="logo">Jira</div><div class="logo">Confluence</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section id="projects" class="section" aria-labelledby="projects-title" style="margin-top:36px">
-        <h2 id="projects-title" style="font-family:var(--display); font-size:32px;">Recent <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Projects</span></h2>
-        <div class="projects" style="margin-top:14px" role="list">
-          <article class="project" role="listitem">
-            <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" alt="Revenue dashboard preview" loading="lazy"/>
-            <div class="p-body"><span class="tag">Power BI</span><h3>Revenue &amp; Collections Cockpit</h3><p class="muted">Executive dashboard with DAX measures, anomaly alerts, and SLA tracking.</p></div>
-          </article>
-          <article class="project" role="listitem">
-            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop" alt="SQL code and charts" loading="lazy"/>
-            <div class="p-body"><span class="tag">SQL</span><h3>Reconciliation Framework</h3><p class="muted">Automated cross-system checks that reduced reporting discrepancies by 11%.</p></div>
-          </article>
-          <article class="project" role="listitem">
-            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1400&auto=format&fit=crop" alt="Compliance and testing visuals" loading="lazy"/>
-            <div class="p-body"><span class="tag">BA</span><h3>Compliance UAT Suite</h3><p class="muted">Traceable test packs for HIPAA/PCI workflows; 14% verification efficiency gain.</p></div>
-          </article>
-        </div>
-      </section>
-
-      <!-- CERTIFICATIONS -->
-      <section id="certs" class="section" aria-labelledby="certs-title" style="margin-top:36px">
-        <h2 id="certs-title" style="font-family:var(--display); font-size:32px;">Professional <span style="background:linear-gradient(90deg,var(--accent-b),var(--accent-a)); -webkit-background-clip:text; background-clip:text; color:transparent;">Certifications</span></h2>
-        <p class="muted">Credentials that back my analytics and platform skills.</p>
-
-        <div class="certs" role="list">
-          <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert-az900-archsec.png" alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security" loading="lazy" data-full="assets/certs/cert-az900-archsec.png">
-            <div class="c-body">
-              <h3>AZ-900 Cert Prep: Azure Architecture & Security</h3>
-              <p class="muted">LinkedIn Learning • Apr 04, 2024 • 1h 59m</p>
-              <div class="tagline"><span class="pill">Microsoft Azure</span> <span class="pill">Cloud Security</span></div>
-            </div>
-          </article>
-
-          <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert-salesforce-admin.png" alt="Salesforce Certified Administrator" loading="lazy" data-full="assets/certs/cert-salesforce-admin.png">
-            <div class="c-body"><h3>Salesforce Certified Administrator</h3><p class="muted">Salesforce • Issued Jul 11, 2023 • Credential ID 3526807</p></div>
-          </article>
-
-          <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert-azure-fundamentals.png" alt="Microsoft Certified: Azure Fundamentals" loading="lazy" data-full="assets/certs/cert-azure-fundamentals.png">
-            <div class="c-body"><h3>Microsoft Certified: Azure Fundamentals</h3><p class="muted">Microsoft • Earned Jun 24, 2023 • Cert No. 6CE48C S284B6</p></div>
-          </article>
-
-          <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert-sql-essential.png" alt="LinkedIn Learning: SQL Essential Training" loading="lazy" data-full="assets/certs/cert-sql-essential.png">
-            <div class="c-body"><h3>SQL Essential Training</h3><p class="muted">LinkedIn Learning • Mar 15, 2024 • 4h 26m</p><div class="tagline"><span class="pill">SQL</span></div></div>
-          </article>
-
-          <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert-powerbi-essential.png" alt="LinkedIn Learning: Power BI Essential Training" loading="lazy" data-full="assets/certs/cert-powerbi-essential.png">
-            <div class="c-body"><h3>Power BI Essential Training</h3><p class="muted">LinkedIn Learning • Mar 21, 2024 • 3h 49m</p><div class="tagline"><span class="pill">Power BI</span></div></div>
-          </article>
-        </div>
-
-        <dialog class="lightbox" id="lightbox" aria-label="Certificate preview">
-          <button class="close" type="button" aria-label="Close">✕</button>
-          <img id="lightbox-img" src="" alt="">
-        </dialog>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="section" aria-labelledby="contact-title" style="margin-top:36px">
-        <h2 id="contact-title" style="font-family:var(--display); font-size:32px;">Let’s work together</h2>
-        <div class="grid">
-          <div class="card">
-            <h3 style="font-family:var(--display); margin-top:0;">Contact Information</h3>
-            <p class="muted">I’m based in Pittsburgh, PA — available for full-time roles and freelance analytics projects.</p>
-            <p><strong>Email:</strong> <a href="mailto:Kaushickgunturi@gmail.com">Kaushickgunturi@gmail.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+14128086629">+1 (412) 808-6629</a></p>
-            <div class="cta-row" style="margin-top:10px">
-              <a class="btn btn-primary" href="mailto:Kaushickgunturi@gmail.com">Start a project</a>
-              <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="font-family:var(--display); margin-top:0;">Socials</h3>
-            <p><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></p>
-            <p><a href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a></p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer role="contentinfo">© <span id="y"></span> Kaushick Varma Gunturi — All rights reserved.</footer>
-
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Theme toggle (kept for future; both modes look good with the new palette)
-    const root = document.documentElement;
-    const stored = localStorage.getItem('theme');
-    if (stored) root.setAttribute('data-theme', stored);
-    document.querySelector('.theme-toggle').addEventListener('click', ()=>{
-      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next); localStorage.setItem('theme', next);
-    });
-
-    // Active nav link
-    const sections=[...document.querySelectorAll('main .section')];
-    const links=[...document.querySelectorAll('.nav-link')];
-    const setActive=()=>{
-      const y=window.scrollY + (window.innerHeight*0.25);
-      let current=sections[0]?.id;
-      for(const sec of sections){if(y >= sec.offsetTop-120) current = sec.id;}
-      links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
-    };
-    setActive(); window.addEventListener('scroll', setActive); window.addEventListener('resize', setActive);
-
-    // Lightbox
-    const dlg=document.getElementById('lightbox');
-    const img=document.getElementById('lightbox-img');
-    document.querySelectorAll('.cert .thumb').forEach(t=>{
-      t.addEventListener('click', ()=>{ img.src=t.dataset.full; img.alt=t.alt; dlg.showModal(); });
-    });
-    dlg.querySelector('.close').addEventListener('click', ()=> dlg.close());
-    dlg.addEventListener('click', e=>{ if(e.target===dlg) dlg.close(); });
-  </script>
-</body>
-</html>
+      <article class="cert">
+        <img class="thumb" src="assets/certs/cert-azure-fundamentals.png"
