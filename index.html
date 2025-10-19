@@ -8,165 +8,263 @@
 
   <style>
     /* ============ Base & Theme ============ */
-    :root{
-      --bg1:#f6fbff;
-      --bg2:#eef6ff;
-      --ink:#0b1020;
-      --muted:#5b6b81;
-      --chip:#ffffffaa;
-      --glass:#ffffffb3;
-      --white:#fff;
-      --accent:#ffb703;
-      --accent-2:#3b82f6;
-      --accent-3:#a855f7;
-      --shadow: 0 20px 40px rgba(27, 46, 94, .18);
+    :root {
+      --bg1: #f6f3ff;
+      --bg2: #edf4ff;
+      --ink: #0b1020;
+      --muted: #5b6b81;
+      --chip: #ffffffaa;
+      --glass: #ffffffb3;
+      --white: #fff;
+      --accent: #ffb703;
+      --accent-2: #3b82f6;
+      --accent-3: #a855f7;
+      --shadow: 0 20px 40px rgba(27, 46, 94, 0.18);
       --radius-xl: 22px;
       --radius-lg: 18px;
       --radius-full: 999px;
     }
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(900px 600px at 85% -10%, rgba(59,130,246,.18), transparent 60%),
-        radial-gradient(800px 500px at 10% 110%, rgba(168,85,247,.16), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--ink);
+      background: linear-gradient(135deg, #f3e8ff 0%, #eef4ff 50%, #ffffff 100%);
       background-attachment: fixed;
     }
-    a{ color:var(--accent-2); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     /* ============ Navbar ============ */
-    .nav{
-      position: sticky; top: 0; z-index: 50;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
       backdrop-filter: blur(12px);
       background: linear-gradient(
         90deg,
-        rgba(255,255,255,0.9) 0%,
-        rgba(236,244,255,0.9) 50%,
-        rgba(225,240,255,0.85) 100%
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(236, 244, 255, 0.9) 50%,
+        rgba(225, 240, 255, 0.85) 100%
       );
-      box-shadow: 0 2px 12px rgba(59,130,246,0.1);
-      border-bottom: 1px solid rgba(200,220,255,0.6);
-      transition: background .3s ease, box-shadow .3s ease;
+      box-shadow: 0 2px 12px rgba(59, 130, 246, 0.1);
+      border-bottom: 1px solid rgba(200, 220, 255, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
-    .nav-inner{
-      max-width:1180px; margin:0 auto; padding:14px 20px;
-      display:flex; align-items:center; justify-content:space-between;
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .brand{ font-weight:800; letter-spacing:.3px; }
-    .nav ul{ list-style:none; display:flex; gap:22px; margin:0; padding:0; }
-    .nav a{ color:#334155; font-weight:600; }
-    .nav a:hover{ color:#111827; }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      color: #111827;
+    }
 
     /* ============ Shell ============ */
-    .container{ max-width:1180px; margin:0 auto; padding:48px 20px; }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
 
     /* ============ HERO ============ */
-    .hero{
-      display:grid; grid-template-columns: 1.2fr .9fr; gap:40px; align-items:center;
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 40px;
+      align-items: center;
       padding: 28px 0 40px;
     }
-    .kicker{ color:#66789a; font-weight:800; text-transform:uppercase; letter-spacing:1px; }
-    h1{ font-size:clamp(38px,6vw,64px); line-height:1.03; margin:10px 0 8px; }
-    .lead{ color:#5b6b81; font-size:clamp(16px,2vw,18px); max-width:62ch; }
-    .cta-row{ display:flex; gap:14px; margin-top:22px; }
-    .btn{
-      display:inline-block; padding:14px 20px; border-radius:14px; font-weight:800;
-      box-shadow:var(--shadow); transition:transform .15s ease, filter .15s ease;
+
+    .kicker {
+      color: #66789a;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .btn:hover{ transform:translateY(-2px); filter:saturate(1.05); }
-    .btn-primary{ background:linear-gradient(135deg, var(--accent-2), #2563eb); color:#fff; }
-    .btn-ghost{ background:#fff; border:1px solid #e6eef9; color:#0b1020; }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.03;
+      margin: 10px 0 8px;
+    }
+
+    .lead {
+      color: #5b6b81;
+      font-size: clamp(16px, 2vw, 18px);
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: saturate(1.05);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-2), #2563eb);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border: 1px solid #e6eef9;
+      color: #0b1020;
+    }
 
     /* Hero Art */
-    .art{ position:relative; display:grid; place-items:center; isolation:isolate; }
-    .blob{
-      position:absolute; width:82%; height:82%;
-      border-radius:45% 55% 60% 40%/50% 45% 55% 50%;
-      background:
-        radial-gradient(120% 120% at 20% 10%, #ffd166 0 25%, #fca311 40%, #ffb703 60%, transparent 70%),
+    .art {
+      position: relative;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .blob {
+      position: absolute;
+      width: 82%;
+      height: 82%;
+      border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+      background: radial-gradient(120% 120% at 20% 10%, #ffd166 0 25%, #fca311 40%, #ffb703 60%, transparent 70%),
         radial-gradient(110% 110% at 85% 85%, #60a5fa 0 35%, #3b82f6 55%, transparent 70%);
-      filter:blur(6px) saturate(1.05); transform:rotate(-6deg); z-index:-1; box-shadow:var(--shadow);
-    }
-    .headshot{
-      width:min(360px,72vw); height:min(360px,72vw); border-radius:50%;
-      object-fit:cover; border:6px solid #fff; background:#fff;
-      box-shadow:0 30px 70px rgba(59,130,246,.25);
-    }
-    .badge{
-      position:absolute; right:6%; top:8%;
-      background:#fff; padding:10px 14px; border-radius:14px; box-shadow:var(--shadow);
-      font-weight:800; font-size:14px; display:flex; align-items:center; gap:8px;
-    }
-    .shape{ position:absolute; width:16px; height:16px; border-radius:6px; opacity:.9; }
-    .shape.star{ clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
-    .s1{ left:10%; top:22%; background:#60a5fa; animation:float 6s ease-in-out infinite; }
-    .s2{ left:44%; top:6%; background:#f59e0b; animation:float 7s ease-in-out .3s infinite; }
-    .s3{ left:52%; top:48%; background:#a78bfa; animation:float 5.5s ease-in-out .6s infinite; }
-    @keyframes float{ 50%{ transform:translateY(-10px) rotate(8deg); } }
-
-    /* ============ Generic Sections ============ */
-    .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:22px; }
-    .card{
-      background:var(--glass); backdrop-filter:blur(10px);
-      border:1px solid #e7eefb; border-radius:var(--radius-xl); padding:22px; box-shadow:var(--shadow);
-    }
-    .muted{ color:var(--muted); }
-
-    /* Service tiles */
-    .service{ padding:24px; }
-    .service .pill{
-      display:inline-block; background:linear-gradient(135deg,#fff,#f7fbff);
-      border:1px solid #e6eef9; padding:8px 12px; border-radius:14px; font-weight:800; font-size:13px;
+      filter: blur(6px) saturate(1.05);
+      transform: rotate(-6deg);
+      z-index: -1;
+      box-shadow: var(--shadow);
     }
 
-    /* ============ Brand Section Rectangle + Sphere ============ */
-    .brand-bg{
-      position:relative; margin-top:24px; padding:80px 0;
-      display:flex; justify-content:center; align-items:center;
-    }
-    .brand-bg::before{
-      content:""; position:absolute; inset:0; width:85%; max-width:900px; height:360px; margin:auto;
-      background: linear-gradient(180deg, #ffffffc9 0%, #f1f6ffb3 100%);
-      border:1px solid #e5ecf8; border-radius:40px; box-shadow:0 20px 50px rgba(100,149,237,.15);
-      z-index:0;
-    }
-    .brand-sphere{
-      position:relative; z-index:2; width:260px; height:260px; border-radius:50%;
-      background: radial-gradient(120% 120% at 30% 30%, #fff, #f3f8ff 60%, #e9f2ff);
-      border:1px solid #e5eefc; box-shadow:var(--shadow);
-      display:grid; place-items:center; gap:10px;
-    }
-    .logo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:70%; }
-    .logo{
-      background:#fff; border:1px solid #e8eef7; border-radius:12px; height:46px;
-      display:grid; place-items:center; font-weight:800; color:#66789a;
+    .headshot {
+      width: min(360px, 72vw);
+      height: min(360px, 72vw);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #fff;
+      box-shadow: 0 30px 70px rgba(59, 130, 246, 0.25);
+      background: #fff;
     }
 
-    /* ============ Projects ============ */
-    .projects{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:20px; }
-    .project{ overflow:hidden; border-radius:20px; background:#fff; border:1px solid #e6eef9; box-shadow:var(--shadow); }
-    .project img{ width:100%; height:170px; object-fit:cover; display:block; }
-    .project .p-body{ padding:14px; }
-    .tag{ display:inline-block; font-size:12px; background:#eef6ff; border:1px solid #dbeafe; color:#1d4ed8; padding:6px 10px; border-radius:999px; font-weight:700; }
+    .badge {
+      position: absolute;
+      right: 6%;
+      top: 8%;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-    /* Footer */
-    footer{ padding:60px 0 80px; text-align:center; color:#6b7c93; }
+    /* ============ Sections ============ */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{ grid-template-columns:1fr; }
-      .art{ order:-1; }
-      .badge{ top:auto; bottom:6%; }
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid #e7eefb;
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .service {
+      padding: 24px;
+    }
+
+    .service .pill {
+      display: inline-block;
+      background: linear-gradient(135deg, #fff, #f7fbff);
+      border: 1px solid #e6eef9;
+      padding: 8px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* ============ Footer ============ */
+    footer {
+      padding: 60px 0 80px;
+      text-align: center;
+      color: #6b7c93;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .art {
+        order: -1;
+      }
+
+      .badge {
+        top: auto;
+        bottom: 6%;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Nav -->
   <div class="nav">
     <div class="nav-inner">
@@ -184,11 +282,10 @@
   </div>
 
   <div class="container" id="hero">
-    <!-- HERO -->
     <section class="hero">
       <div>
         <div class="kicker">Business Analyst</div>
-        <h1>Hy! I am<br/>Kaushick Varma Gunturi</h1>
+        <h1>Hy! I am<br />Kaushick Varma Gunturi</h1>
         <p class="lead">I turn business questions into measurable insights and clear decisions using SQL, Python, Power BI, and modern data platforms.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#contact">Hire Me</a>
@@ -200,108 +297,26 @@
         <div class="blob"></div>
         <img class="headshot" src="profile-placeholder.png" alt="Kaushick Varma Gunturi" />
         <div class="badge">🏆 Best Data Project</div>
-        <span class="shape star s1"></span>
-        <span class="shape s2"></span>
-        <span class="shape star s3"></span>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" style="margin-top:24px">
-      <h2 style="margin:4px 0 16px">My awesome <span style="color:var(--accent-2)">services</span></h2>
+    <section id="services" style="margin-top: 24px">
+      <h2 style="margin: 4px 0 16px">My awesome <span style="color: var(--accent-2)">services</span></h2>
       <div class="grid">
         <div class="card service">
           <span class="pill">Design</span>
           <h3>Dashboard Design</h3>
-          <p class="muted">Executive-ready Power BI dashboards with DAX KPIs, drill-downs, and performance tuning.</p>
-          <a class="btn btn-ghost" style="margin-top:10px" href="#projects">Learn more</a>
+          <p>Executive-ready Power BI dashboards with DAX KPIs, drill-downs, and performance tuning.</p>
         </div>
         <div class="card service">
           <span class="pill">Developer</span>
           <h3>Data Analytics</h3>
-          <p class="muted">SQL modeling, reconciliation and automated reporting across Snowflake/Azure and Excel.</p>
-          <a class="btn btn-ghost" style="margin-top:10px" href="#projects">Learn more</a>
+          <p>SQL modeling, reconciliation, and automated reporting across Snowflake/Azure and Excel.</p>
         </div>
         <div class="card service">
           <span class="pill">BA</span>
           <h3>Business Analysis</h3>
-          <p class="muted">BRDs/FRDs, user stories, UAT, compliance (HIPAA, PCI-DSS, SOC 2) and cross-team facilitation.</p>
-          <a class="btn btn-ghost" style="margin-top:10px" href="#projects">Learn more</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- BRANDS -->
-    <section id="brands" style="margin-top:40px">
-      <h2>Work for all this <span style="color:var(--accent-2)">Brand & Client</span></h2>
-      <p class="muted">A few platforms and tools I use day-to-day.</p>
-
-      <div class="brand-bg">
-        <div class="brand-sphere">
-          <div class="logo-grid">
-            <div class="logo">Azure</div>
-            <div class="logo">Snowflake</div>
-            <div class="logo">Power BI</div>
-            <div class="logo">SQL</div>
-            <div class="logo">Python</div>
-            <div class="logo">Excel</div>
-            <div class="logo">Tableau</div>
-            <div class="logo">Jira</div>
-            <div class="logo">Confluence</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" style="margin-top:40px">
-      <h2>Recent <span style="color:var(--accent-2)">Projects</span></h2>
-      <div class="projects" style="margin-top:14px">
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" alt="Project 1"/>
-          <div class="p-body">
-            <span class="tag">Power BI</span>
-            <h3>Revenue & Collections Cockpit</h3>
-            <p class="muted">Executive dashboard with DAX measures, anomaly alerts, and SLA tracking.</p>
-          </div>
-        </article>
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop" alt="Project 2"/>
-          <div class="p-body">
-            <span class="tag">SQL</span>
-            <h3>Reconciliation Framework</h3>
-            <p class="muted">Automated cross-system checks that reduced reporting discrepancies by 11%.</p>
-          </div>
-        </article>
-        <article class="project">
-          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=1400&auto=format&fit=crop" alt="Project 3"/>
-          <div class="p-body">
-            <span class="tag">BA</span>
-            <h3>Compliance UAT Suite</h3>
-            <p class="muted">Traceable test packs for HIPAA/PCI workflows; 14% verification efficiency gain.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" style="margin-top:40px">
-      <h2>Let’s work together</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Contact Information</h3>
-          <p class="muted">I’m based in Pittsburgh, PA — available for full-time roles and freelance analytics projects.</p>
-          <p><strong>Email:</strong> <a href="mailto:Kaushickgunturi@gmail.com">Kaushickgunturi@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+14128086629">+1 (412) 808-6629</a></p>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn btn-primary" href="mailto:Kaushickgunturi@gmail.com">Start a project</a>
-            <a class="btn btn-ghost" href="Kaushick_Gunturi_Resume.pdf" download>Download CV</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Socials</h3>
-          <p><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></p>
-          <p><a href="https://github.com/kaushickgunturi-debug" target="_blank" rel="noopener">GitHub</a></p>
+          <p>BRDs/FRDs, user stories, UAT, compliance (HIPAA, PCI-DSS, SOC 2) and cross-team facilitation.</p>
         </div>
       </div>
     </section>
@@ -310,22 +325,7 @@
   <footer>© <span id="y"></span> Kaushick Varma Gunturi — All rights reserved.</footer>
 
   <script>
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Scroll shading for navbar
-    const nav = document.querySelector(".nav");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 30) {
-        nav.style.background =
-          "linear-gradient(90deg, rgba(235,243,255,0.95) 0%, rgba(220,235,255,0.95) 100%)";
-        nav.style.boxShadow = "0 3px 15px rgba(59,130,246,0.15)";
-      } else {
-        nav.style.background =
-          "linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(236,244,255,0.9) 50%, rgba(225,240,255,0.85) 100%)";
-        nav.style.boxShadow = "0 2px 12px rgba(59,130,246,0.1)";
-      }
-    });
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
