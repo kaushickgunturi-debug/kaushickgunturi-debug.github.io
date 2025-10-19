@@ -267,9 +267,9 @@
         <p class="muted" style="text-align:center;">Credentials that back my analytics and platform skills.</p>
 
         <div class="certs" role="list">
-          <!-- NOTE: Filenames updated to match your uploaded names -->
+          <!-- Use the exact filenames in your repo root -->
           <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert1-CuDFgO8G.png" data-full="assets/certs/cert1-CuDFgO8G.png"
+            <img class="thumb" src="cert-az900-archsec.png" data-full="cert-az900-archsec.png"
                  alt="LinkedIn Learning: AZ-900 Cert Prep — Azure Architecture & Security" loading="lazy">
             <div class="c-body">
               <h3>AZ-900 Cert Prep: Azure Architecture & Security</h3>
@@ -279,7 +279,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert2-BiTSpCxN.png" data-full="assets/certs/cert2-BiTSpCxN.png"
+            <img class="thumb" src="cert-salesforce-admin.png" data-full="cert-salesforce-admin.png"
                  alt="Salesforce Certified Administrator" loading="lazy">
             <div class="c-body">
               <h3>Salesforce Certified Administrator</h3>
@@ -288,7 +288,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert3-DwEUk6t5.png" data-full="assets/certs/cert3-DwEUk6t5.png"
+            <img class="thumb" src="cert-azure-fundamentals.png" data-full="cert-azure-fundamentals.png"
                  alt="Microsoft Certified: Azure Fundamentals" loading="lazy">
             <div class="c-body">
               <h3>Microsoft Certified: Azure Fundamentals</h3>
@@ -297,7 +297,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert4-Bh9gEU8l.png" data-full="assets/certs/cert4-Bh9gEU8l.png"
+            <img class="thumb" src="cert-sql-essential.png" data-full="cert-sql-essential.png"
                  alt="LinkedIn Learning: SQL Essential Training" loading="lazy">
             <div class="c-body">
               <h3>SQL Essential Training</h3>
@@ -307,7 +307,7 @@
           </article>
 
           <article class="cert" role="listitem">
-            <img class="thumb" src="assets/certs/cert5-gFve2EDf.png" data-full="assets/certs/cert5-gFve2EDf.png"
+            <img class="thumb" src="cert-powerbi-essential.png" data-full="cert-powerbi-essential.png"
                  alt="LinkedIn Learning: Power BI Essential Training" loading="lazy">
             <div class="c-body">
               <h3>Power BI Essential Training</h3>
@@ -379,7 +379,6 @@
     const img=document.getElementById('lightbox-img');
     document.querySelectorAll('.cert .thumb').forEach(t=>{
       t.addEventListener('click', ()=>{ img.src=t.dataset.full; img.alt=t.alt; dlg.showModal(); });
-      t.addEventListener('error', ()=> console.warn('Missing image:', t.src));
     });
     dlg.querySelector('.close').addEventListener('click', ()=> dlg.close());
     dlg.addEventListener('click', e=>{ if(e.target===dlg) dlg.close(); });
